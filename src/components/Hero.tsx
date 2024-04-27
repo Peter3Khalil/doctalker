@@ -6,6 +6,11 @@ interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Hero: FC<ComponentProps> = ({ className, ...props }) => {
   return (
     <section className="hero relative flex h-full flex-col items-center">
+      <iframe
+        src="https://giphy.com/embed/l5JbspfwZ0yjHjlJ0K"
+        className="absolute left-0 top-0 h-full w-full object-cover object-center"
+        allowFullScreen
+      ></iframe>
       <article
         className={cn(
           'absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center',
