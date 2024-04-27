@@ -48,6 +48,21 @@
     --ring: 263.4 70% 50.4%;
   }
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 9999px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--foreground)/.8);
+}
+
 .hero{
   background-image: url('/hero.webp');
   background-size: cover;
