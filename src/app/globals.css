@@ -48,86 +48,46 @@
     --ring: 263.4 70% 50.4%;
   }
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap');
-* {
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+.hero{
+  background-image: url('/hero.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    hsl(var(--primary) / 0.8),
+    hsl(var(--foreground) / 0.8)
+  );
+  z-index: 1;
 }
 
-html {
-  font-size: 18px;
-}
-
-/* Make html tag font size be 16px in small screens */
-@media screen and (max-width: 640px) {
-  html {
-    font-size: 16px;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-body,
-#__next {
-  height: 100svh;
-  font-size: inherit;
-}
-#mainContainer {
-  height: 100%;
-  width: 100%;
-  font-size: inherit;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-}
-#textarea::-webkit-scrollbar {
-  width: 0;
-}
-
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--muted-foreground) / 0.3);
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(var(--muted-foreground) / 0.8);
-}
-
-#chatList::-webkit-scrollbar-track {
-  background: black;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-iframe::-webkit-scrollbar {
-  display: none;
-  width: 0;
-}
-
-.visible {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  border-bottom: 3px solid hsl(var(--primary));
-  transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-}
-
-#main::-webkit-scrollbar {
-  display: none;
+.animate-gradient {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--foreground))
+  );
+  background-size: 500% 500%;
+  animation: gradient 4s ease infinite;
+  -webkit-animation: gradient 4s ease infinite;
 }

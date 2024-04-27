@@ -18,8 +18,8 @@
   ],
   "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
-    "prettier/prettier": ["error"],
     "no-console": "warn",
+    "no-var": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -28,17 +28,15 @@
         "filter": {
           "regex": "^React$",
           "match": false
-        }
+        },
+        "leadingUnderscore": "allow",
+        "modifiers":["import"]
       },
       {
         "selector": ["variable"],
         "types": ["boolean"],
         "format": ["PascalCase"],
         "prefix": ["can", "did", "has", "is", "must", "needs", "should", "will"]
-      },
-      {
-        "selector": ["memberLike", "variableLike"],
-        "format": ["camelCase"]
       },
       {
         "selector": "typeLike",
@@ -54,17 +52,17 @@
       },
       {
         "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE"]
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"]
       },
       {
         "selector": "function",
         "format": ["camelCase", "PascalCase"]
       },
       {
-        "selector":"interface",
+        "selector": "interface",
         "format": ["PascalCase"],
         "prefix": ["I"]
-      }
+      }      
     ]
   }
 }
