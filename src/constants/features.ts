@@ -1,25 +1,41 @@
-import { Feature } from '@/types';
+import {
+  BrainIcon,
+  ChatWithFolderIcon,
+  EaseToUseIcon,
+  PerformanceIcon,
+  SecurityIcon,
+} from '@/components/shared/Icons';
+import { type Feature } from '@/types';
 
 export const FEATURES: Feature[] = [
   {
-    title: 'Understand documents effortlessly with AI.',
-    name: 'Extract Key Points',
+    name: 'Different AI Models',
+    icon: BrainIcon,
     description:
-      'Transform the way you read and comprehend PDF content. Summarize lengthy passages, extract key information, and quickly locate what you need. Say hello to an efficient and hassle-free document comprehension journey.',
-    image: '/imgs/features/1.webp',
+      'DocTalker supports the latest GPT4 and Gemini ai models to provide the best results for your needs.',
   },
   {
-    title: 'Summarize Textbooks, Articles, and More.',
-    name: 'Summarize Content',
+    name: 'Chat with Folder',
+    icon: ChatWithFolderIcon,
     description:
-      'Say goodbye to lengthy reading sessions. Summarize textbooks, articles, and other content in a matter of seconds. Get the gist of the content and focus on what matters the most.',
-    image: '/imgs/features/2.webp',
+      'Chat with multiple documents to get the information you need.',
   },
   {
-    title: 'Revolutionize the way you study.',
-    name: 'Study Smarter',
+    name: 'Easy to Use',
+    icon: EaseToUseIcon,
     description:
-      'Experience a new way of studying. Use AI to summarize content, extract key points, and understand complex topics with ease. Study smarter, not harder.',
-    image: '/imgs/features/3.webp',
+      'DocTalker is an easy-to-use platform that makes it simple to get started on any device.',
+  },
+  {
+    name: 'Secure',
+    icon: SecurityIcon,
+    description:
+      'DocTalker is a secure platform that ensures your data is safe and protected.',
+  },
+  {
+    name: 'High Performance',
+    icon: PerformanceIcon,
+    description:
+      'DocTalker is a high-performance platform that delivers fast and reliable results.',
   },
 ];

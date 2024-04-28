@@ -1,27 +1,27 @@
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Feature } from '@/types';
+import { type Capability } from '@/types';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import Reveal from '../Animation/Reveal';
+import Reveal from '../../../components/Animation/Reveal';
+import GradientButton from '../../../components/shared/GradientButton';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
-  feature: Feature;
+  capability: Capability;
   isOdd?: boolean;
 }
-const FeatureCard: FC<ComponentProps> = ({ feature, isOdd }) => {
-  const firstWord = feature.name.split(' ')[0];
-  const restOfWords = feature.name.split(' ').slice(1).join(' ');
+const CapabilityCard: FC<ComponentProps> = ({ capability, isOdd }) => {
+  const firstWord = capability.name.split(' ')[0];
+  const restOfWords = capability.name.split(' ').slice(1).join(' ');
   return (
     <article className="flex flex-col items-center gap-10 rounded-lg bg-accent-foreground px-6 py-12 text-accent lg:px-16">
       <h2 className="bg-gradient-to-r from-primary to-background bg-clip-text text-center text-2xl font-bold text-transparent lg:text-3xl">
-        {feature.title}
+        {capability.title}
       </h2>
-      <div className="flex w-full flex-col gap-3 md:flex-row md:gap-12 lg:h-[400px]">
+      <div className="flex w-full flex-col gap-6 md:flex-row md:gap-12 lg:h-[400px]">
         <div
           className={cn(
             'custom-shadow aspect-square h-[200px] rounded-2xl md:h-full md:flex-1',
             {
-              'lg:order-2': isOdd,
+              'md:order-2': isOdd,
             },
           )}
         >
@@ -34,8 +34,8 @@ const FeatureCard: FC<ComponentProps> = ({ feature, isOdd }) => {
             className="img-card relative h-full w-full rounded-[inherit]"
           >
             <Image
-              src={feature.image}
-              alt="Feature"
+              src={capability.image}
+              alt="capability"
               layout="fill"
               className="absolute left-0 top-0 h-full w-full rounded-[inherit] object-cover object-center"
             />
@@ -49,15 +49,13 @@ const FeatureCard: FC<ComponentProps> = ({ feature, isOdd }) => {
             {restOfWords}
           </h3>
           <p className="text-base text-muted/70 md:text-lg">
-            {feature.description}
+            {capability.description}
           </p>
-          <Button className="gradient mt-6 w-fit px-8 py-6 text-lg transition-all duration-500 ease-in-out hover:scale-110 md:mt-12">
-            Start Chatting
-          </Button>
+          <GradientButton>Start Chatting</GradientButton>
         </div>
       </div>
     </article>
   );
 };
 
-export default FeatureCard;
+export default CapabilityCard;

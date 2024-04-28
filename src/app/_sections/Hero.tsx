@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
 import TypingEffect from '@/components/Animation/TypingEffect';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import React, { FC } from 'react';
+import GradientButton from '../../components/shared/GradientButton';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Hero: FC<ComponentProps> = ({ className, ...props }) => {
   return (
@@ -29,9 +29,14 @@ const Hero: FC<ComponentProps> = ({ className, ...props }) => {
           your papers, reports, and textbooks at no cost. Revolutionize your PDF
           experience with ease.
         </TypingEffect>
-        <Button className="animate-gradient mt-12 px-8 py-6 text-lg transition-all duration-500 ease-in-out hover:scale-110">
-          Start Chatting
-        </Button>
+        <GradientButton
+          onMouseOut={(e) => {
+            e.currentTarget.classList.add('animate-gradient');
+          }}
+          className="animate-gradient"
+        >
+          Get Started
+        </GradientButton>
       </article>
     </section>
   );
