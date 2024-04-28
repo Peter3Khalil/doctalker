@@ -1,6 +1,6 @@
 export type Feature = {
-    title: string;
-    name: string;
-    description: string;
-    image: string;
-  };
+  title: string;
+  name: string;
+  description: string;
+  image: string;
+};

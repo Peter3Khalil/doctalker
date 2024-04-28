@@ -20,45 +20,6 @@
   "rules": {
     "no-console": "warn",
     "no-var": "error",
-    "no-unused-vars": "error",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "default",
-        "format": ["camelCase"],
-        "filter": {
-          "regex": "^React$",
-          "match": false
-        },
-        "leadingUnderscore": "allow",
-        "modifiers":["import"]
-      },
-      {
-        "selector": ["variable"],
-        "types": ["boolean"],
-        "format": ["PascalCase"],
-        "prefix": ["can", "did", "has", "is", "must", "needs", "should", "will"]
-      },
-      {
-        "selector": "typeLike",
-        "format": ["PascalCase"]
-      },
-      {
-        "selector": "enumMember",
-        "format": ["PascalCase"]
-      },
-      {
-        "selector": "enum",
-        "format": ["PascalCase"]
-      },
-      {
-        "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE", "PascalCase"]
-      },
-      {
-        "selector": "function",
-        "format": ["camelCase", "PascalCase"]
-      }  
-    ]
+    "no-unused-vars": "error"
   }
 }
