@@ -5,7 +5,7 @@ const Header: FC<ComponentProps> = ({ className, ...props }) => {
   return (
     <header
       className={cn(
-        'h-20 border-b border-muted-foreground/30 bg-accent-foreground text-background',
+        'h-20 border-b backdrop-blur-3xl fixed top-0 left-0 z-20 w-full border-muted-foreground/30 bg-foreground/30 text-background',
         className,
       )}
       {...props}

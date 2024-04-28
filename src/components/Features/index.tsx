@@ -17,7 +17,7 @@ const Features: FC<ComponentProps> = ({ className, ...props }) => {
       {...props}
     >
       {FEATURES.map((feature, index) => (
-        <Reveal key={index} className="">
+        <Reveal rootMargin={isMobile?"-300px":"-500px"} key={index} className="">
           <FeatureCard feature={feature} isOdd={index % 2 === 0} />
         </Reveal>
       ))}
@@ -31,6 +31,7 @@ const Features: FC<ComponentProps> = ({ className, ...props }) => {
               duration={0.5}
               key={index}
               delay={isMobile ? 0 : 0.6 * index}
+              rootMargin={isMobile ? '-300px' : '-100px'}
             >
               <article className="flex h-full w-full flex-col items-center gap-8 rounded-lg border border-primary bg-foreground px-6 py-10 text-center">
                 <div className="flex flex-col items-center gap-2">

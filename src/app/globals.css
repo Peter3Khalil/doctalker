@@ -102,6 +102,10 @@
   -ms-border-radius: var(--radius);
   -o-border-radius: var(--radius);
 }
+.custom-shadow {
+  box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;

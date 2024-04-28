@@ -4,19 +4,21 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 interface ComponentProps extends React.ComponentProps<typeof motion.div> {
   delay?: number;
   duration?: number;
+  rootMargin?: string;
 }
 const Reveal: FC<ComponentProps> = ({
   children,
   className,
   duration = 2,
   delay = 0.1,
+  rootMargin = '-100px',
   ...props
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const isInView = useInView(ref, {
     once: true,
-    margin: '-10px',
+    margin: rootMargin,
   });
   useEffect(() => {
     if (isInView) {

@@ -4,9 +4,9 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 export default function Home(): JSX.Element {
   return (
-    <main className="min-h-full w-full">
+    <main className="pt-20 min-h-full w-full overflow-auto bg-foreground">
       <Header />
-      <div className="h-[calc(100svh-5rem)] overflow-auto bg-foreground">
+      <div className="h-[calc(100svh-5rem)]">
         <Hero />
         <Features />
       </div>

@@ -1,8 +1,9 @@
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Feature } from '@/types';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import { Button } from '@/components/ui/button';
-import { Feature } from '@/types';
-import { cn } from '@/lib/utils';
+import Reveal from '../Animation/Reveal';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
   feature: Feature;
   isOdd?: boolean;
@@ -18,20 +19,27 @@ const FeatureCard: FC<ComponentProps> = ({ feature, isOdd }) => {
       <div className="flex w-full flex-col gap-3 md:flex-row md:gap-12 lg:h-[400px]">
         <div
           className={cn(
-            'aspect-square h-[200px] rounded-2xl border-2 border-primary/50 p-2 md:h-full md:flex-1',
+            'custom-shadow aspect-square h-[200px] rounded-2xl md:h-full md:flex-1',
             {
               'lg:order-2': isOdd,
             },
           )}
         >
-          <div className="img-card relative h-full w-full rounded-[inherit]">
+          <Reveal
+            variants={{
+              hidden: { opacity: 0, scale: 0 },
+              visible: { opacity: 1, scale: 1 },
+            }}
+            duration={1.5}
+            className="img-card relative h-full w-full rounded-[inherit]"
+          >
             <Image
               src={feature.image}
               alt="Feature"
               layout="fill"
               className="absolute left-0 top-0 h-full w-full rounded-[inherit] object-cover object-center"
             />
-          </div>
+          </Reveal>
         </div>
         <div className="flex flex-1 flex-col justify-center gap-3">
           <h3 className="text-2xl font-semibold md:text-3xl">
