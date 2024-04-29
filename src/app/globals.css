@@ -101,6 +101,11 @@
 .custom-shadow {
   box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
 }
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 @keyframes gradient {
   0% {
