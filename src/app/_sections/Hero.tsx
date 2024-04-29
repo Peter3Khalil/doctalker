@@ -14,7 +14,7 @@ const Hero: FC<ComponentProps> = ({ className, ...props }) => {
         {...props}
       >
         <div className="flex flex-col items-center gap-4">
-          <h1 className="bg-gradient-to-r from-primary via-background to-primary bg-clip-text text-3xl font-bold text-transparent md:text-6xl">
+          <h1 className="text-3xl font-bold text-background md:text-6xl">
             Chat with Document
           </h1>
           <span className="text-md gradient shrink-0 rounded-full px-4 py-2 font-bold text-background">

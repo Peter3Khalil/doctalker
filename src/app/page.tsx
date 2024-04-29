@@ -5,9 +5,9 @@ import Header from '@/components/Header';
 import Features from '@/app/_sections/Features';
 export default function Home(): JSX.Element {
   return (
-    <main className="min-h-full w-full overflow-auto bg-foreground pt-16 md:pt-20">
+    <main className="min-h-full w-full overflow-auto bg-foreground">
       <Header />
-      <div className="h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)]">
+      <div className="h-[100svh]">
         <Hero />
         <Capabilities />
         <Features />
