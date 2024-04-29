@@ -16,9 +16,9 @@ const Features: FC<ComponentProps> = ({ className, ...props }) => {
               visible: { opacity: 1, scale: 1 },
             }}
             key={index}
-            delay={0.5 * index}
-            duration={1.5}
-            rootMargin="-50px"
+            delay={0.2 * index}
+            duration={1}
+            rootMargin="-10px"
           >
             <FeatureCard feature={feature} />
           </Reveal>

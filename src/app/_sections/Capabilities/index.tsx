@@ -8,6 +8,7 @@ import Reveal from '../../../components/Animation/Reveal';
 import GradientButton from '../../../components/shared/GradientButton';
 import FeatureCard from './CapabilityCard';
 import Card from './Card';
+import SectionHeading from '@/components/shared/SectionHeading';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Capabilities: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ width: 768 });
@@ -25,9 +26,7 @@ const Capabilities: FC<ComponentProps> = ({ className, ...props }) => {
         </Reveal>
       ))}
       <Section>
-        <h2 className="bg-gradient-to-r from-primary to-background bg-clip-text text-center text-2xl font-bold text-transparent lg:text-3xl">
-          Accelerate your work.
-        </h2>
+        <SectionHeading>Accelerate your work.</SectionHeading>
         <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:min-h-full lg:grid-cols-3">
           {CARDS.map((card, index) => (
             <Reveal
