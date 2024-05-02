@@ -1,6 +1,7 @@
 'use client';
-import React, { FC, useEffect, useRef } from 'react';
+import useMediaQuery from '@/hooks/useMediaQuery';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { FC, useEffect, useRef } from 'react';
 interface ComponentProps extends React.ComponentProps<typeof motion.div> {
   delay?: number;
   duration?: number;
@@ -11,9 +12,10 @@ const Reveal: FC<ComponentProps> = ({
   className,
   duration = 2,
   delay = 0.1,
-  rootMargin = '-100px',
+  rootMargin = '-50px',
   ...props
 }) => {
+  const { isMatched: isMobile } = useMediaQuery({ width: 768 });
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const isInView = useInView(ref, {
@@ -21,10 +23,16 @@ const Reveal: FC<ComponentProps> = ({
     margin: rootMargin,
   });
   useEffect(() => {
-    if (isInView) {
+    if (isInView && !isMobile) {
       controls.start('visible');
     }
-  }, [controls, isInView]);
+  }, [controls, isInView, isMobile]);
+  if (isMobile)
+    return (
+      <>
+        {children as React.ReactNode}
+      </>
+    );
   return (
     <motion.div
       variants={{
