@@ -29,9 +29,9 @@ const Reveal: FC<ComponentProps> = ({
   }, [controls, isInView, isMobile]);
   if (isMobile)
     return (
-      <>
+      <div className={className}>
         {children as React.ReactNode}
-      </>
+      </div>
     );
   return (
     <motion.div
