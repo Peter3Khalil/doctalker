@@ -7,4 +7,5 @@ export {
   MonitorSmartphone as EaseToUseIcon,
   Folder as ChatWithFolderIcon,
   Brain as BrainIcon,
+  NotebookPen as NotebookPenIcon  
 } from 'lucide-react';

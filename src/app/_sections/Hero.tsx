@@ -29,14 +29,7 @@ const Hero: FC<ComponentProps> = ({ className, ...props }) => {
           your papers, reports, and textbooks at no cost. Revolutionize your PDF
           experience with ease.
         </TypingEffect>
-        <GradientButton
-          onMouseOut={(e) => {
-            e.currentTarget.classList.add('animate-gradient');
-          }}
-          className="animate-gradient"
-        >
-          Get Started
-        </GradientButton>
+        <GradientButton>Get Started</GradientButton>
       </article>
     </section>
   );

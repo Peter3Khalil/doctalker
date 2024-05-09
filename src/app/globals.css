@@ -53,7 +53,9 @@
     @apply bg-gradient-to-l from-primary to-foreground;
   }
 }
-
+body{
+  min-height: 100svh;
+}
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -98,22 +100,8 @@
   -ms-border-radius: var(--radius);
   -o-border-radius: var(--radius);
 }
-.animate-shadow {
-  animation: shadow-pulse 5s infinite;
-  -webkit-animation: shadow-pulse 5s infinite alternate-reverse;
-}
 
-@keyframes shadow-pulse {
-  0% {
-    box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.2);
-  }
-  50% {
-    box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.5);
-  }
-  100% {
-    box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
-  }
-}
+
 .custom-shadow {
   box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
 }
