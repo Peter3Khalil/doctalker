@@ -1,7 +1,10 @@
+"use client"
 import TypingEffect from '@/components/Animation/TypingEffect';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import GradientButton from '../../components/shared/GradientButton';
+import Link from 'next/link';
+import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Hero: FC<ComponentProps> = ({ className, ...props }) => {
   return (
@@ -29,7 +32,9 @@ const Hero: FC<ComponentProps> = ({ className, ...props }) => {
           your papers, reports, and textbooks at no cost. Revolutionize your PDF
           experience with ease.
         </TypingEffect>
-        <GradientButton>Get Started</GradientButton>
+        <Link href={PAGES_ROUTES.register}>
+          <GradientButton>Get Started</GradientButton>
+        </Link>
       </article>
     </section>
   );
