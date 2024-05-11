@@ -11,7 +11,7 @@ import Card from './Card';
 import SectionHeading from '@/components/shared/SectionHeading';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Capabilities: FC<ComponentProps> = ({ className, ...props }) => {
-  const { isMatched: isMobile } = useMediaQuery({ width: 768 });
+  const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
   return (
     <section
       className={cn(

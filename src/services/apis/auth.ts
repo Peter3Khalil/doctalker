@@ -29,15 +29,7 @@ export const signUp = async ({
   firstName: string;
   lastName: string;
 }) => {
-  const res = apiService.post<
-    unknown,
-    {
-      status: string;
-      data: {
-        token: string;
-      };
-    }
-  >('/api/user/signup', {
+  const res = apiService.post('/api/user/signup', {
     data: { email, password, firstName, lastName },
   });
   return res;

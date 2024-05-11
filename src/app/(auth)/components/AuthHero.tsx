@@ -10,11 +10,11 @@ const AuthHero = () => {
         src="/imgs/globe.webp"
         width={900}
         height={500}
-        className="absolute left-0 top-0 z-10 h-full w-full object-cover object-center"
+        className="absolute left-0 top-0 -z-10 h-full w-full object-cover object-center"
         alt="Login"
       />
       {/* Content */}
-      <div className="absolute left-0 top-0 z-[100] hidden h-full w-full items-center justify-center px-6 text-accent lg:flex">
+      <div className="absolute left-0 top-0 z-20 hidden h-full w-full items-center justify-center px-6 text-accent lg:flex">
         <div className="flex flex-col items-center justify-center gap-6">
           <Reveal
             variants={{
@@ -47,7 +47,7 @@ const AuthHero = () => {
         </div>
       </div>
       {/* Overlay */}
-      <div className="absolute left-0 top-0 z-20 h-full w-full bg-accent-foreground/60 lg:bg-accent-foreground/40"></div>
+      <div className="absolute left-0 top-0 z-10 h-full w-full bg-accent-foreground/60 lg:bg-accent-foreground/40"></div>
     </section>
   );
 };
