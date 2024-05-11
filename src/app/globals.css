@@ -52,8 +52,11 @@
   .gradient {
     @apply bg-gradient-to-l from-primary to-foreground;
   }
+  .transition-class {
+    @apply transition-all duration-300 ease-in-out;
+  }
 }
-body{
+body {
   min-height: 100svh;
 }
 ::-webkit-scrollbar {
@@ -100,7 +103,6 @@ body{
   -ms-border-radius: var(--radius);
   -o-border-radius: var(--radius);
 }
-
 
 .custom-shadow {
   box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);

@@ -1,9 +1,25 @@
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import React, { FC } from 'react';
-interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
-const Logo: FC<ComponentProps> = ({ className, ...props }) => {
+import { cva, type VariantProps } from 'class-variance-authority';
+const logoVariants = cva('', {
+  variants: {
+    variant: {
+      default: 'gradient to-background bg-clip-text text-transparent',
+      primary: 'gradient to-primary bg-clip-text text-transparent',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+interface ComponentProps
+  extends React.HTMLProps<HTMLAnchorElement>,
+    VariantProps<typeof logoVariants> {}
+const Logo: FC<ComponentProps> = ({ className, variant, ...props }) => {
   return (
-    <div
+    <Link
+      href="/"
       className={cn(
         'flex items-center gap-2 text-lg font-bold md:text-xl',
         className,
@@ -13,10 +29,8 @@ const Logo: FC<ComponentProps> = ({ className, ...props }) => {
       <span className="rounded-xl bg-primary px-2 py-1 text-primary-foreground">
         DOC
       </span>
-      <span className="gradient to-background bg-clip-text text-transparent">
-        Talker
-      </span>
-    </div>
+      <span className={cn(logoVariants({ variant }))}>Talker</span>
+    </Link>
   );
 };
 

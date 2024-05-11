@@ -22,9 +22,10 @@ export const FEATURES: Feature[] = [
       'Chat with multiple documents to get the information you need.',
   },
   {
-    name:"Handwriting Recognition",
+    name: 'Handwriting Recognition',
     icon: NotebookPenIcon,
-    description:"DocTalker supports handwriting recognition to provide the best results for your needs."
+    description:
+      'DocTalker supports handwriting recognition to provide the best results for your needs.',
   },
   {
     name: 'Easy to Use',

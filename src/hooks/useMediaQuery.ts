@@ -1,10 +1,31 @@
-"use client";
+'use client';
 import React, { useEffect } from 'react';
+// Write a documentation for this component props
 
-const useMediaQuery = ({ width }: { width: number }) => {
+/**
+ * useMediaQuery hook
+ * @param {number} maxWidth - The maximum width of the screen
+ * @param {number} minWidth - The minimum width of the screen
+ * @returns {boolean} isMatched - The boolean value of the media query
+ * @example
+ * const { isMatched } = useMediaQuery({ maxWidth: 768 });
+ * if (isMatched) {
+ *  console.log('The screen is less than 768px');
+ * }
+ */
+
+const useMediaQuery = ({
+  maxWidth,
+  minWidth,
+}: {
+  maxWidth?: number;
+  minWidth?: number;
+}) => {
   const [isMatched, setIsMatched] = React.useState(false);
   useEffect(() => {
-    const media = window.matchMedia(`(max-width: ${width}px)`);
+    const media = window.matchMedia(
+      `${minWidth ? `(min-width: ${minWidth}px)` : ''} ${maxWidth ? `(max-width: ${maxWidth}px)` : ''}`,
+    );
     if (media.matches) {
       setIsMatched(true);
     }
@@ -17,7 +38,7 @@ const useMediaQuery = ({ width }: { width: number }) => {
     };
     media.addEventListener('change', listener);
     return () => media.removeEventListener('change', listener);
-  }, [width]);
+  }, [maxWidth, minWidth]);
   return { isMatched };
 };
 

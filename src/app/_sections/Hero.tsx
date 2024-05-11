@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import TypingEffect from '@/components/Animation/TypingEffect';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';

@@ -25,7 +25,7 @@ const useTypeWriter = ({ text, speed = 1000 }: IUseTypeWriter) => {
     return () => {
       clearInterval(intervalId.current as NodeJS.Timeout);
     };
-  }, [currentText, currentIndex, speed, text,isDone]);
+  }, [currentText, currentIndex, speed, text, isDone]);
   return {
     isDone,
     currentText,

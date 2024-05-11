@@ -1,9 +1,7 @@
-"use client";
+'use client';
 import LoadingComponent from '@/components/shared/Loading';
 const Loading = () => {
-  return (
-    <LoadingComponent />
-  );
+  return <LoadingComponent />;
 };
 
 export default Loading;
