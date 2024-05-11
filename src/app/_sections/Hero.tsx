@@ -25,7 +25,7 @@ const Hero: FC<ComponentProps> = ({ className, ...props }) => {
           </span>
         </div>
         <TypingEffect
-          delay={30}
+          speed={30}
           className="text-md mt-6 min-h-[120px] w-full overflow-auto break-words bg-gradient-to-r from-secondary to-muted-foreground bg-clip-text font-semibold text-transparent md:min-h-[100px] md:w-[600px] md:text-lg"
         >
           Leverage AI to analyze your PDFs. Experience the freedom to talk to
