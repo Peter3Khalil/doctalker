@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { InputFieldType } from '@/types';
 import React, { FC } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { ErrorIcon } from './Icons';
+import { ErrorIcon, HideIcon, ViewIcon } from './Icons';
 interface InputFieldProps extends React.HTMLProps<HTMLDivElement> {
   field: InputFieldType;
   isValid?: boolean;
@@ -21,6 +21,7 @@ const InputField: FC<InputFieldProps> = ({
   ...props
 }) => {
   const [isFocused, setIsFocused] = React.useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const ref = React.useRef<HTMLInputElement>(null);
   const hasError = errorMessage && errorMessage?.length > 0;
   const handleFocus = () => {
@@ -63,7 +64,7 @@ const InputField: FC<InputFieldProps> = ({
         >
           {field.label}
         </Label>
-        <div className="flex h-full items-center gap-2">
+        <div className="flex h-full items-center justify-between gap-2">
           {field.icon && (
             <field.icon
               size={20}
@@ -72,15 +73,40 @@ const InputField: FC<InputFieldProps> = ({
               })}
             />
           )}
-          <Input
-            ref={ref}
-            type={field.type}
-            id={field.name}
-            {...register}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            className="h-full border-none bg-transparent px-0 placeholder:capitalize focus-visible:border-none lg:placeholder:text-accent-foreground/80"
-          />
+          {field.type === 'password' ? (
+            <>
+              <Input
+                ref={ref}
+                type={isPasswordVisible ? 'text' : field.type}
+                id={field.name}
+                {...register}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                className="h-full border-none bg-transparent px-0 placeholder:capitalize focus-visible:border-none lg:placeholder:text-accent-foreground/80"
+              />
+              <button
+                type="button"
+                title={isPasswordVisible ? 'Hide password' : 'View password'}
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
+              >
+                {isPasswordVisible ? (
+                  <HideIcon size={20} className="text-accent-foreground/80" />
+                ) : (
+                  <ViewIcon size={20} className="text-accent-foreground/80" />
+                )}
+              </button>
+            </>
+          ) : (
+            <Input
+              ref={ref}
+              type={field.type}
+              id={field.name}
+              {...register}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              className="h-full border-none bg-transparent px-0 placeholder:capitalize focus-visible:border-none lg:placeholder:text-accent-foreground/80"
+            />
+          )}
         </div>
       </div>
       {errorMessage && (

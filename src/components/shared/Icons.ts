@@ -15,4 +15,6 @@ export {
   Mail as MailIcon,
   ShieldAlert as ErrorIcon,
   Lock as PasswordIcon,
+  Eye as ViewIcon,
+  EyeOff as HideIcon,
 } from 'lucide-react';

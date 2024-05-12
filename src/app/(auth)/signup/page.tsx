@@ -112,7 +112,12 @@ const SignUp = () => {
           Sign Up
         </Button>
       </FormContainer>
-      <Link href={PAGES_ROUTES.login}>Login</Link>
+      <p className="mt-4">
+        Already have an account?{' '}
+        <Link className="font-bold text-primary" href={PAGES_ROUTES.login}>
+          Login
+        </Link>
+      </p>
     </div>
   );
 };

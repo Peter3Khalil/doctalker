@@ -47,7 +47,12 @@ const Login: FC<PageProps> = () => {
           Login
         </Button>
       </FormContainer>
-      <Link href={PAGES_ROUTES.register}>Sign up</Link>
+      <p className="mt-4">
+        New to DocTalker?{' '}
+        <Link className="font-bold text-primary" href={PAGES_ROUTES.register}>
+          Register
+        </Link>
+      </p>
     </div>
   );
 };
