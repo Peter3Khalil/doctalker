@@ -1,6 +1,6 @@
 'use client';
-import React, { FC, useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { FC, useEffect, useRef } from 'react';
 interface ComponentProps extends React.ComponentProps<typeof motion.div> {
   delay?: number;
   duration?: number;
@@ -11,7 +11,7 @@ const Reveal: FC<ComponentProps> = ({
   className,
   duration = 2,
   delay = 0.1,
-  rootMargin = '-100px',
+  rootMargin = '-50px',
   ...props
 }) => {
   const ref = useRef<HTMLDivElement>(null);

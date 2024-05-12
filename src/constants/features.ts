@@ -2,6 +2,7 @@ import {
   BrainIcon,
   ChatWithFolderIcon,
   EaseToUseIcon,
+  NotebookPenIcon,
   PerformanceIcon,
   SecurityIcon,
 } from '@/components/shared/Icons';
@@ -19,6 +20,12 @@ export const FEATURES: Feature[] = [
     icon: ChatWithFolderIcon,
     description:
       'Chat with multiple documents to get the information you need.',
+  },
+  {
+    name: 'Handwriting Recognition',
+    icon: NotebookPenIcon,
+    description:
+      'DocTalker supports handwriting recognition to provide the best results for your needs.',
   },
   {
     name: 'Easy to Use',

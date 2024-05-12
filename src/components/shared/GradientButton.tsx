@@ -13,12 +13,6 @@ const GradientButton: FC<ComponentProps> = ({
         'gradient mt-6 w-fit px-8 py-6 text-lg transition-all duration-500 ease-in-out hover:scale-110 md:mt-12',
         className,
       )}
-      onMouseOut={(e) => {
-        e.currentTarget.classList.remove('animate-gradient');
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.classList.add('animate-gradient');
-      }}
       {...props}
     >
       {children}

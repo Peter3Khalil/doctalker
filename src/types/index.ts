@@ -22,3 +22,19 @@ export type Feature = {
   >;
   description: string;
 };
+
+export type AuthPageCardType = {
+  name: string;
+  description: string;
+  icon: React.ForwardRefExoticComponent<
+    Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
+  >;
+};
+
+export type InputFieldType = {
+  name: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  required?: boolean;
+};

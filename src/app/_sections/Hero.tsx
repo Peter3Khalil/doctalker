@@ -1,7 +1,10 @@
+'use client';
 import TypingEffect from '@/components/Animation/TypingEffect';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import GradientButton from '../../components/shared/GradientButton';
+import Link from 'next/link';
+import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Hero: FC<ComponentProps> = ({ className, ...props }) => {
   return (
@@ -22,21 +25,16 @@ const Hero: FC<ComponentProps> = ({ className, ...props }) => {
           </span>
         </div>
         <TypingEffect
-          delay={30}
+          speed={30}
           className="text-md mt-6 min-h-[120px] w-full overflow-auto break-words bg-gradient-to-r from-secondary to-muted-foreground bg-clip-text font-semibold text-transparent md:min-h-[100px] md:w-[600px] md:text-lg"
         >
           Leverage AI to analyze your PDFs. Experience the freedom to talk to
           your papers, reports, and textbooks at no cost. Revolutionize your PDF
           experience with ease.
         </TypingEffect>
-        <GradientButton
-          onMouseOut={(e) => {
-            e.currentTarget.classList.add('animate-gradient');
-          }}
-          className="animate-gradient"
-        >
-          Get Started
-        </GradientButton>
+        <Link href={PAGES_ROUTES.register}>
+          <GradientButton>Get Started</GradientButton>
+        </Link>
       </article>
     </section>
   );

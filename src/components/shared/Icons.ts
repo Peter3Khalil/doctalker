@@ -7,4 +7,9 @@ export {
   MonitorSmartphone as EaseToUseIcon,
   Folder as ChatWithFolderIcon,
   Brain as BrainIcon,
+  NotebookPen as NotebookPenIcon,
+  MessageCircleMore as ChatIcon,
+  LineChart as AnalysesIcon,
+  Star as StarIcon,
+  PenTool as SummarizeIcon,
 } from 'lucide-react';

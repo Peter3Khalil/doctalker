@@ -14,9 +14,7 @@ const CapabilityCard: FC<ComponentProps> = ({ capability, isOdd }) => {
   const restOfWords = capability.name.split(' ').slice(1).join(' ');
   return (
     <article className="flex flex-col items-center gap-10 rounded-lg bg-accent-foreground px-6 py-12 text-accent lg:px-16">
-     <SectionHeading>
-      {capability.title}
-     </SectionHeading>
+      <SectionHeading>{capability.title}</SectionHeading>
       <div className="flex w-full flex-col gap-6 md:flex-row md:gap-12 lg:h-[400px]">
         <div
           className={cn(
