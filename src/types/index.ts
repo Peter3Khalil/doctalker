@@ -36,5 +36,8 @@ export type InputFieldType = {
   label: string;
   type: string;
   placeholder: string;
+  icon?: React.ForwardRefExoticComponent<
+    Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
+  >;
   required?: boolean;
 };

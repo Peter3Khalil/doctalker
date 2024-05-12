@@ -1,6 +1,9 @@
 import {
   AnalysesIcon,
   ChatIcon,
+  MailIcon,
+  NotebookPenIcon,
+  PasswordIcon,
   StarIcon,
   SummarizeIcon,
 } from '@/components/shared/Icons';
@@ -13,6 +16,7 @@ export const LOGIN_FIELDS: InputFieldType[] = [
     type: 'email',
     placeholder: 'Email',
     required: true,
+    icon: MailIcon,
   },
   {
     label: 'Password',
@@ -20,6 +24,7 @@ export const LOGIN_FIELDS: InputFieldType[] = [
     type: 'password',
     placeholder: 'Password',
     required: true,
+    icon: PasswordIcon,
   },
 ];
 
@@ -30,6 +35,7 @@ export const REGISTER_FIELDS: InputFieldType[] = [
     type: 'text',
     placeholder: 'First Name',
     required: true,
+    icon: NotebookPenIcon,
   },
   {
     label: 'last name',
@@ -37,6 +43,7 @@ export const REGISTER_FIELDS: InputFieldType[] = [
     type: 'text',
     placeholder: 'Last Name',
     required: true,
+    icon: NotebookPenIcon,
   },
   {
     label: 'email',
@@ -44,6 +51,7 @@ export const REGISTER_FIELDS: InputFieldType[] = [
     type: 'email',
     placeholder: 'Email',
     required: true,
+    icon: MailIcon,
   },
   {
     label: 'password',
@@ -51,6 +59,7 @@ export const REGISTER_FIELDS: InputFieldType[] = [
     type: 'password',
     placeholder: 'Password',
     required: true,
+    icon: PasswordIcon,
   },
   {
     label: 'confirm password',
@@ -58,6 +67,7 @@ export const REGISTER_FIELDS: InputFieldType[] = [
     type: 'password',
     placeholder: 'Confirm Password',
     required: true,
+    icon: PasswordIcon,
   },
 ];
 

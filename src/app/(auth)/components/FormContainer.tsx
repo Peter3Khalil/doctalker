@@ -1,9 +1,13 @@
+import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 interface FormContainerProps extends React.HTMLProps<HTMLFormElement> {}
 
-const FormContainer: FC<FormContainerProps> = ({ children }) => {
+const FormContainer: FC<FormContainerProps> = ({ children, className,...props }) => {
   return (
-    <form className="flex w-full flex-col gap-3 md:w-[400px] lg:w-[90%]">
+    <form
+      className={cn("flex w-full flex-col gap-5 md:w-[400px] lg:w-[90%]",className)}
+      {...props}
+    >
       {children}
     </form>
   );
