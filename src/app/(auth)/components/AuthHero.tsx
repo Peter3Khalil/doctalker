@@ -1,11 +1,18 @@
 import Reveal from '@/components/Animation/Reveal';
 import { AUTH_PAGE_CARDS } from '@/constants/authPages';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import React from 'react';
-
-const AuthHero = () => {
+import React, { FC } from 'react';
+interface AuthHeroProps extends React.HTMLProps<HTMLDivElement> {}
+const AuthHero: FC<AuthHeroProps> = ({ className, ...props }) => {
   return (
-    <section className="absolute left-0 top-0 h-full w-full flex-1 lg:relative lg:block">
+    <section
+      className={cn(
+        'absolute left-0 top-0 h-full w-full flex-1 lg:relative',
+        className,
+      )}
+      {...props}
+    >
       <Image
         src="/imgs/globe.webp"
         width={900}

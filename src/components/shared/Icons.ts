@@ -14,5 +14,5 @@ export {
   PenTool as SummarizeIcon,
   Mail as MailIcon,
   ShieldAlert as ErrorIcon,
-  Lock as PasswordIcon, 
+  Lock as PasswordIcon,
 } from 'lucide-react';

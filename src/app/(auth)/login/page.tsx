@@ -22,6 +22,7 @@ const Login: FC<PageProps> = () => {
     mode: 'onBlur',
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    //TODO: Implement login logic
     console.log(data);
   };
   return (
@@ -31,7 +32,7 @@ const Login: FC<PageProps> = () => {
         {LOGIN_FIELDS.map((field, i) => (
           <fieldset key={i}>
             <InputField
-            isValid={isValid}
+              isValid={isValid}
               field={field}
               register={register(field.name as keyof Inputs, {
                 required: 'This field is required',
