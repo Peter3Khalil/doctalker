@@ -12,4 +12,7 @@ export {
   LineChart as AnalysesIcon,
   Star as StarIcon,
   PenTool as SummarizeIcon,
+  Mail as MailIcon,
+  ShieldAlert as ErrorIcon,
+  Lock as PasswordIcon, 
 } from 'lucide-react';
