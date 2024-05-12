@@ -8,6 +8,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 import { ErrorIcon } from './Icons';
 interface InputFieldProps extends React.HTMLProps<HTMLDivElement> {
   field: InputFieldType;
+  isValid?: boolean;
   errorMessage?: string;
   register?: UseFormRegisterReturn<string>;
 }
@@ -15,6 +16,7 @@ const InputField: FC<InputFieldProps> = ({
   field,
   className,
   errorMessage,
+  isValid,
   register,
   ...props
 }) => {
@@ -39,8 +41,9 @@ const InputField: FC<InputFieldProps> = ({
           'transition-class relative flex h-14 w-full flex-col rounded-md border border-background/40 bg-muted px-3',
           className,
           {
-            'border-primary lg:border-primary': isFocused,
-            'border-destructive lg:border-destructive': hasError,
+            'border-primary': isFocused,
+            'border-destructive': hasError,
+            'border-green-400': isValid,
           },
         )}
         {...props}
@@ -54,6 +57,7 @@ const InputField: FC<InputFieldProps> = ({
               'border-background/40': !isFocused,
               'border-destructive': hasError && isFocused,
               'text-destructive': hasError,
+              'border-green-400': isValid,
             },
           )}
         >
