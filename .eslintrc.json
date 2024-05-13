@@ -20,6 +20,7 @@
   "rules": {
     "no-console": "warn",
     "no-var": "error",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "prefer-const": "off"
   }
 }

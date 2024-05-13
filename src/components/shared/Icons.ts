@@ -17,4 +17,5 @@ export {
   Lock as PasswordIcon,
   Eye as ViewIcon,
   EyeOff as HideIcon,
+  Linkedin as LinkedinIcon,
 } from 'lucide-react';

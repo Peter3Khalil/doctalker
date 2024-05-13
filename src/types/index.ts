@@ -41,3 +41,7 @@ export type InputFieldType = {
   >;
   required?: boolean;
 };
+export type MemberType = {
+  name: string;
+  role: string;
+};
