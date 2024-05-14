@@ -1,34 +1,8 @@
-import Section from '@/components/Layouts/Section';
-import SectionHeading from '@/components/shared/SectionHeading';
+import { cn } from '@/lib/utils';
+import { MemberType } from '@/types';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import { LinkedinIcon } from '@/components/shared/Icons';
-import { cn } from '@/lib/utils';
-import { MemberType } from '@/types';
-import { TEAM } from '@/constants/team';
-const Team = () => {
-  return (
-    <Section id="team" className="bg-foreground">
-      <SectionHeading>Meet the team</SectionHeading>
-      <ul className="grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:min-h-full lg:grid-cols-4">
-        <li className="col-span-full grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:min-h-full lg:grid-cols-4">
-          <MemberCard
-            member={{
-              name: 'Dr: Wael Zakaria',
-              role: 'Supervisor',
-            }}
-            className="col-span-full lg:col-start-2 lg:col-end-4"
-          />
-        </li>
-        {TEAM.map((member, index) => (
-          <li key={index}>
-            <MemberCard member={member} />
-          </li>
-        ))}
-      </ul>
-    </Section>
-  );
-};
 interface MemberCardProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
@@ -36,6 +10,7 @@ interface MemberCardProps
   > {
   member: MemberType;
 }
+
 const MemberCard: FC<MemberCardProps> = ({ className, member }) => {
   return (
     <div
@@ -69,4 +44,5 @@ const MemberCard: FC<MemberCardProps> = ({ className, member }) => {
     </div>
   );
 };
-export default Team;
+
+export default MemberCard;
