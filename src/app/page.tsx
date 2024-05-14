@@ -1,18 +1,17 @@
 'use client';
-import Capabilities from '@/app/_sections/Capabilities';
-import Features from '@/app/_sections/Features';
-import Hero from '@/app/_sections/Hero';
 import Header from '@/components/Header';
-import Team from './_sections/Team';
+import { SECTIONS } from '@/constants/sections';
 export default function Home() {
   return (
     <main className="w-full">
       <Header />
       <div className="h-[100svh] divide-y-[1px] divide-background/20">
-        <Hero />
-        <Capabilities />
-        <Features />
-        <Team />
+        {SECTIONS.map((section, index) => {
+          const SectionComponent = section.component as React.FC<
+            React.HTMLProps<HTMLDivElement>
+          >;
+          return <SectionComponent key={index} id={section.id} />;
+        })}
       </div>
     </main>
   );

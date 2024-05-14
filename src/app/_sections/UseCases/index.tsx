@@ -1,16 +1,16 @@
 import Section from '@/components/Layouts/Section';
-import { CAPABILITIES } from '@/constants/capabilities';
+import SectionHeading from '@/components/shared/SectionHeading';
+import { USE_CASES } from '@/constants/useCases';
 import { CARDS } from '@/constants/cards';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import Reveal from '../../../components/Animation/Reveal';
 import GradientButton from '../../../components/shared/GradientButton';
-import FeatureCard from './CapabilityCard';
+import FeatureCard from './UseCaseCard';
 import Card from './Card';
-import SectionHeading from '@/components/shared/SectionHeading';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
-const Capabilities: FC<ComponentProps> = ({ className, ...props }) => {
+const UseCases: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
   return (
     <section
@@ -20,9 +20,9 @@ const Capabilities: FC<ComponentProps> = ({ className, ...props }) => {
       )}
       {...props}
     >
-      {CAPABILITIES.map((capability, index) => (
+      {USE_CASES.map((useCase, index) => (
         <Reveal rootMargin={isMobile ? '-200px' : '-300px'} key={index}>
-          <FeatureCard capability={capability} isOdd={index % 2 === 0} />
+          <FeatureCard useCase={useCase} isOdd={index % 2 === 0} />
         </Reveal>
       ))}
       <Section>
@@ -45,4 +45,4 @@ const Capabilities: FC<ComponentProps> = ({ className, ...props }) => {
   );
 };
 
-export default Capabilities;
+export default UseCases;

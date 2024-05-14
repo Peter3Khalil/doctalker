@@ -5,10 +5,13 @@ import { TEAM } from '@/constants/team';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import MemberCard from './MemberCard';
 import RevealDesktop from './RevealDesktop';
-const Team = () => {
+import { FC } from 'react';
+import { cn } from '@/lib/utils';
+interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+const Team: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
   return (
-    <Section id="team" className="bg-foreground">
+    <Section id="team" className={cn('bg-foreground', className)} {...props}>
       <SectionHeading>Meet the team</SectionHeading>
       <ul className="grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:min-h-full lg:grid-cols-4">
         <li className="col-span-full grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:min-h-full lg:grid-cols-4">

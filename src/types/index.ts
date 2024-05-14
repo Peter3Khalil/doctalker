@@ -1,6 +1,6 @@
 import { type LucideProps } from 'lucide-react';
 import React from 'react';
-export type Capability = {
+export type UseCaseType = {
   title: string;
   name: string;
   description: string;
