@@ -6,7 +6,7 @@ const Layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main className="h-[100svh] w-full">
+    <main className="h-[100svh] w-full bg-background">
       <PageContainer>{children}</PageContainer>
     </main>
   );

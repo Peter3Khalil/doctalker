@@ -14,10 +14,10 @@ const FeatureCard: FC<ComponentProps> = ({ feature, className, ...props }) => {
       {...props}
     >
       <div className="flex flex-col items-center gap-2 md:items-start">
-        <feature.icon className="text-primary" size={48} />
-        <h3 className="text-2xl font-semibold capitalize">{feature.name}</h3>
+        <feature.icon className="text-primary" size={32} />
+        <h3 className="text-xl font-semibold capitalize">{feature.name}</h3>
       </div>
-      <p className="text-base text-accent/70 md:text-lg">
+      <p className="md:text-md text-base text-accent/70">
         {feature.description}
       </p>
     </article>
