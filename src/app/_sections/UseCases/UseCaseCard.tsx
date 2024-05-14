@@ -5,6 +5,8 @@ import React, { FC } from 'react';
 import Reveal from '../../../components/Animation/Reveal';
 import GradientButton from '../../../components/shared/GradientButton';
 import SectionHeading from '@/components/shared/SectionHeading';
+import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import Link from 'next/link';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
   useCase: UseCaseType;
   isOdd?: boolean;
@@ -50,7 +52,9 @@ const UseCaseCard: FC<ComponentProps> = ({ useCase, isOdd }) => {
           <p className="text-base text-muted/70 md:text-lg">
             {useCase.description}
           </p>
-          <GradientButton>Start Chatting</GradientButton>
+          <Link href={PAGES_ROUTES.register}>
+            <GradientButton>Get Started</GradientButton>
+          </Link>
         </div>
       </div>
     </article>

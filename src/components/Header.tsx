@@ -5,6 +5,7 @@ import useScroll from '@/hooks/useScroll';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React, { FC } from 'react';
+import { Button } from './ui/button';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Header: FC<ComponentProps> = ({ className, ...props }) => {
   const { move } = useScroll();
@@ -19,7 +20,7 @@ const Header: FC<ComponentProps> = ({ className, ...props }) => {
       )}
       {...props}
     >
-      <div className="flex h-full items-center justify-between px-6 md:px-12 lg:px-20">
+      <div className="flex h-full items-center justify-between px-3 md:px-12">
         <Logo />
         <nav className="">
           <ul className="hidden items-center gap-6 md:flex">
@@ -33,10 +34,12 @@ const Header: FC<ComponentProps> = ({ className, ...props }) => {
           </ul>
         </nav>
         <div className="flex items-center space-x-4">
-          <Link href={PAGES_ROUTES['login']} className="btn">
-            Login
-          </Link>
-          <button className="btn">Register</button>
+          <Button className="rounded-full">
+            <Link href={PAGES_ROUTES['login']}>Login</Link>
+          </Button>
+          <Button variant="outline" className="rounded-full bg-transparent">
+            <Link href={PAGES_ROUTES['register']}>Register</Link>
+          </Button>
         </div>
       </div>
     </header>

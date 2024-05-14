@@ -6,6 +6,8 @@ import { CARDS } from '@/constants/cards';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import React, { FC } from 'react';
 import Card from './Card';
+import Link from 'next/link';
+import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const TargetUsers: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
@@ -24,7 +26,9 @@ const TargetUsers: FC<ComponentProps> = ({ className, ...props }) => {
           </Reveal>
         ))}
       </div>
-      <GradientButton className="custom-shadow">Get Started</GradientButton>
+      <Link href={PAGES_ROUTES.register}>
+        <GradientButton>Get Started</GradientButton>
+      </Link>
     </Section>
   );
 };

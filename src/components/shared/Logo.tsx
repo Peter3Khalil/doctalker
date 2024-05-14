@@ -26,7 +26,7 @@ const Logo: FC<ComponentProps> = ({ className, variant, ...props }) => {
       )}
       {...props}
     >
-      <span className="rounded-xl bg-primary px-2 py-1 text-primary-foreground">
+      <span className="rounded-full bg-primary p-2 px-4 text-base text-primary-foreground">
         DOC
       </span>
       <span className={cn(logoVariants({ variant }))}>Talker</span>
