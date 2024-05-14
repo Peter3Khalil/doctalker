@@ -38,7 +38,10 @@ const Header: FC<ComponentProps> = ({ className, ...props }) => {
           <Button className="rounded-full">
             <Link href={PAGES_ROUTES['login']}>Login</Link>
           </Button>
-          <Button variant="outline" className="rounded-full bg-transparent">
+          <Button
+            variant="outline"
+            className="hidden rounded-full bg-transparent md:block"
+          >
             <Link href={PAGES_ROUTES['register']}>Register</Link>
           </Button>
         </div>
