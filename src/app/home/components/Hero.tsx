@@ -2,7 +2,7 @@
 import TypingEffect from '@/components/Animation/TypingEffect';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
-import GradientButton from '../../components/shared/GradientButton';
+import GradientButton from '@/components/shared/GradientButton';
 import Link from 'next/link';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}

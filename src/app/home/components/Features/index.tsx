@@ -8,7 +8,7 @@ import SectionHeading from '@/components/shared/SectionHeading';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Features: FC<ComponentProps> = ({ className, ...props }) => {
   return (
-    <Section className={cn('bg-transparent', className)} {...props}>
+    <Section className={cn(className)} {...props}>
       <SectionHeading>Features</SectionHeading>
       <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-3 lg:min-h-full lg:grid-cols-4">
         {FEATURES.map((feature, index) => (
@@ -22,7 +22,10 @@ const Features: FC<ComponentProps> = ({ className, ...props }) => {
             duration={1}
             rootMargin="-10px"
           >
-            <FeatureCard feature={feature} />
+            <FeatureCard
+              className="border border-accent/20 bg-foreground/30"
+              feature={feature}
+            />
           </Reveal>
         ))}
       </div>

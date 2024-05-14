@@ -1,7 +1,7 @@
-import Features from '@/app/_sections/Features';
-import Hero from '@/app/_sections/Hero';
-import Team from '@/app/_sections/Team';
-import UseCases from '@/app/_sections/UseCases';
+import Features from '@/app/home/components/Features';
+import Hero from '@/app/home/components/Hero';
+import Team from '@/app/home/components/Team';
+import UseCases from '@/app/home/components/UseCases';
 
 type SectionType = {
   name: string;

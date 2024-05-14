@@ -1,3 +1,4 @@
+'use client';
 import Logo from '@/components/shared/Logo';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 import { SECTIONS } from '@/constants/sections';

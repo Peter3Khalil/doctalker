@@ -1,4 +1,3 @@
-'use client';
 import Reveal from '@/components/Animation/Reveal';
 import React, { FC } from 'react';
 

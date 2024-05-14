@@ -1,3 +1,4 @@
+'use client';
 import Reveal from '@/components/Animation/Reveal';
 import Section from '@/components/Layouts/Section';
 import GradientButton from '@/components/shared/GradientButton';
