@@ -66,7 +66,6 @@ const SignUp = () => {
   const OTHER_FIELDS = REGISTER_FIELDS.filter(
     (field) => field.name !== 'first_name' && field.name !== 'last_name',
   );
-  console.log(isPasswordMatch);
   return (
     <div className="flex w-full flex-col items-center">
       <PageTitle>Sign Up</PageTitle>
@@ -102,7 +101,7 @@ const SignUp = () => {
           </fieldset>
         ))}
         {!isPasswordMatch && isValid && (
-          <div className='w-full flex items-center justify-center'>
+          <div className="flex w-full items-center justify-center">
             <p className="text-sm text-destructive">Password does not match</p>
           </div>
         )}
@@ -113,7 +112,12 @@ const SignUp = () => {
           Sign Up
         </Button>
       </FormContainer>
-      <Link href={PAGES_ROUTES.login}>Login</Link>
+      <p className="mt-4">
+        Already have an account?{' '}
+        <Link className="font-bold text-primary" href={PAGES_ROUTES.login}>
+          Login
+        </Link>
+      </p>
     </div>
   );
 };

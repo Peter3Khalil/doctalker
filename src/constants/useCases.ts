@@ -1,6 +1,6 @@
-import { type Capability } from '@/types';
+import { type UseCaseType } from '@/types';
 
-export const CAPABILITIES: Capability[] = [
+export const USE_CASES: UseCaseType[] = [
   {
     title: 'Understand documents effortlessly with AI.',
     name: 'Extract Key Points',

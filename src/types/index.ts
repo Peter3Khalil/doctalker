@@ -1,6 +1,6 @@
 import { type LucideProps } from 'lucide-react';
 import React from 'react';
-export type Capability = {
+export type UseCaseType = {
   title: string;
   name: string;
   description: string;
@@ -40,4 +40,8 @@ export type InputFieldType = {
     Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
   >;
   required?: boolean;
+};
+export type MemberType = {
+  name: string;
+  role: string;
 };

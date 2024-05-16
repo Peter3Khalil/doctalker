@@ -1,20 +1,22 @@
 import { cn } from '@/lib/utils';
-import { type Capability } from '@/types';
+import { type UseCaseType } from '@/types';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import Reveal from '../../../components/Animation/Reveal';
-import GradientButton from '../../../components/shared/GradientButton';
+import Reveal from '@/components/Animation/Reveal';
+import GradientButton from '@/components/shared/GradientButton';
 import SectionHeading from '@/components/shared/SectionHeading';
+import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import Link from 'next/link';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
-  capability: Capability;
+  useCase: UseCaseType;
   isOdd?: boolean;
 }
-const CapabilityCard: FC<ComponentProps> = ({ capability, isOdd }) => {
-  const firstWord = capability.name.split(' ')[0];
-  const restOfWords = capability.name.split(' ').slice(1).join(' ');
+const UseCaseCard: FC<ComponentProps> = ({ useCase, isOdd }) => {
+  const firstWord = useCase.name.split(' ')[0];
+  const restOfWords = useCase.name.split(' ').slice(1).join(' ');
   return (
     <article className="flex flex-col items-center gap-10 rounded-lg bg-accent-foreground px-6 py-12 text-accent lg:px-16">
-      <SectionHeading>{capability.title}</SectionHeading>
+      <SectionHeading>{useCase.title}</SectionHeading>
       <div className="flex w-full flex-col gap-6 md:flex-row md:gap-12 lg:h-[400px]">
         <div
           className={cn(
@@ -33,8 +35,8 @@ const CapabilityCard: FC<ComponentProps> = ({ capability, isOdd }) => {
             className="img-card relative h-full w-full rounded-[inherit]"
           >
             <Image
-              src={capability.image}
-              alt="capability"
+              src={useCase.image}
+              alt="useCase"
               layout="fill"
               className="absolute left-0 top-0 h-full w-full rounded-[inherit] object-cover object-center"
             />
@@ -48,13 +50,15 @@ const CapabilityCard: FC<ComponentProps> = ({ capability, isOdd }) => {
             {restOfWords}
           </h3>
           <p className="text-base text-muted/70 md:text-lg">
-            {capability.description}
+            {useCase.description}
           </p>
-          <GradientButton>Start Chatting</GradientButton>
+          <Link href={PAGES_ROUTES.register}>
+            <GradientButton>Get Started</GradientButton>
+          </Link>
         </div>
       </div>
     </article>
   );
 };
 
-export default CapabilityCard;
+export default UseCaseCard;

@@ -9,7 +9,7 @@
     "lint": "eslint src --fix",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "prebuild": "npm run format && npm run lint && npm run type-check"
+    "pre-commit": "npm run format && npm run lint && npm run type-check"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

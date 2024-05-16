@@ -5,7 +5,7 @@ const Section: FC<ComponentProps> = ({ className, children, ...props }) => {
   return (
     <section
       className={cn(
-        'flex flex-col items-center gap-10 rounded-lg bg-accent-foreground px-6 py-12 text-accent lg:px-20',
+        'flex flex-col items-center gap-10 bg-accent-foreground px-6 py-12 text-accent lg:px-20',
         className,
       )}
       {...props}
