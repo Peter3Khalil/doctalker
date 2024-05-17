@@ -5,7 +5,7 @@ import Main from './components/Main';
 
 const Chat: React.FC = () => {
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-full w-full gap-3">
       <Sidebar />
       <Main />
     </div>

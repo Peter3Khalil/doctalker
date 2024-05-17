@@ -20,4 +20,5 @@ export {
   Linkedin as LinkedinIcon,
   ChevronRight as ArrowRightIcon,
   Gem as ProIcon,
+  PanelRightOpen as OpenPanelIcon,
 } from 'lucide-react';
