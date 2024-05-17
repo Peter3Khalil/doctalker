@@ -1,12 +1,10 @@
-
 tasks:
   - init: npm install && npm run build
     command: npm run start
-ports: 
+ports:
   - port: 3001
     onOpen: open-preview
 
 vscode:
   extensions:
     - esbenp.prettier-vscodeommit
-
