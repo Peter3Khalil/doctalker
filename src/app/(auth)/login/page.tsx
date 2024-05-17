@@ -4,16 +4,18 @@ import { Button } from '@/components/ui/button';
 import { LOGIN_FIELDS } from '@/constants/authPages';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 import Link from 'next/link';
-import { FC } from 'react';
+import { useRouter } from 'next/navigation';
+import { FC, useLayoutEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import FormContainer from '../components/FormContainer';
 import PageTitle from '../components/PageTitle';
-import { SubmitHandler, useForm } from 'react-hook-form';
 type Inputs = {
   email: string;
   password: string;
 };
 interface PageProps {}
 const Login: FC<PageProps> = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -21,10 +23,17 @@ const Login: FC<PageProps> = () => {
   } = useForm<Inputs>({
     mode: 'onBlur',
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    //TODO: Implement login logic
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = () => {
+    localStorage.setItem('token', 'token');
+    //make user can not go back to login page
+    router.push('/chat');
   };
+  useLayoutEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      router.push('/chat');
+    }
+  }, [router]);
   return (
     <div className="flex w-full flex-col items-center">
       <PageTitle>Login</PageTitle>

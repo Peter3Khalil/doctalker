@@ -45,7 +45,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Alternatively, you can also use the [Ready-to-Code Gitpod](https://gitpod.io/#https://github.com/Peter3Khalil/doctalker-app-router) and easily check how your deployment looks. It will automatically run the commands mentioned above on run.
 
-
 ## Contributing
 
 If you want to add a new feature or fix a bug, create a new branch or fork and commit there. Before opening a PR, be sure to

@@ -18,4 +18,6 @@ export {
   Eye as ViewIcon,
   EyeOff as HideIcon,
   Linkedin as LinkedinIcon,
+  ChevronRight as ArrowRightIcon,
+  Gem as ProIcon,
 } from 'lucide-react';

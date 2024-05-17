@@ -45,12 +45,14 @@ const SignUp = () => {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
+  const watchPassword = watch('password');
+  const watchConfirmPassword = watch('confirm_password');
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
   };
   useEffect(() => {
     if (isValid) {
-      if (watch('password') === watch('confirm_password')) {
+      if (watchPassword === watchConfirmPassword) {
         setIsPasswordMatch(true);
       } else {
         setIsPasswordMatch(false);
@@ -58,7 +60,7 @@ const SignUp = () => {
     } else {
       setIsPasswordMatch(false);
     }
-  }, [watch('password'), watch('confirm_password'), isValid]);
+  }, [watchPassword, watchConfirmPassword, isValid]);
 
   const NAME_FIELDS = REGISTER_FIELDS.filter(
     (field) => field.name === 'first_name' || field.name === 'last_name',
