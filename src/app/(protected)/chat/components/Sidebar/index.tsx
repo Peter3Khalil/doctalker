@@ -6,7 +6,19 @@ import StarMessages from './StarMessages';
 import { FC, useCallback, useState } from 'react';
 import { cn } from '@/lib/utils';
 import Tooltip from '@/components/shared/Tooltip';
-
+const chats: (string | string[])[] = [
+  'Chat 1',
+  'Chat 2',
+  [
+    `
+  Peterdddddddd
+  Peterdddddddd
+  Peterdddddddd
+  
+  `,
+    'Chat 3',
+  ],
+];
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: never;
 }
@@ -15,7 +27,7 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
   const toggle = useCallback(() => setClosed((prev: boolean) => !prev), []);
   return (
     <div
-      className={cn('flex', {
+      className={cn('flex h-full w-fit', {
         'gap-2': !closed,
       })}
     >
@@ -32,8 +44,8 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
         <Button variant="secondary" className="w-full shrink-0">
           New Chat
         </Button>
-        <div className="hide-scrollbar overflow-auto">
-          <AllChats />
+        <div className="overflow-auto">
+          <AllChats chats={chats} />
           <StarMessages />
         </div>
         <ProFeature role="free">

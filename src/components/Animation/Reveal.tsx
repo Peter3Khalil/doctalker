@@ -1,4 +1,5 @@
 'use client';
+import { cn } from '@/lib/utils';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import React, { FC, useEffect, useRef } from 'react';
 interface ComponentProps extends React.ComponentProps<typeof motion.div> {
@@ -35,7 +36,7 @@ const Reveal: FC<ComponentProps> = ({
       animate={controls}
       transition={{ duration, delay }}
       ref={ref}
-      className={className}
+      className={cn('h-full w-full', className)}
       {...props}
     >
       {children}
