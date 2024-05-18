@@ -16,7 +16,7 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
   return (
     <Wrapper
       className={cn('transition-class flex flex-col', className, {
-        'invisible w-0 flex-none overflow-hidden opacity-0': !isShown,
+        'invisible w-0 flex-none': !isShown,
       })}
       {...props}
     >

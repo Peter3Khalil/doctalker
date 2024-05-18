@@ -31,34 +31,37 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
         'gap-2': !closed,
       })}
     >
-      <aside
-        className={cn(
-          'transition-class visible grid h-full w-[300px] grid-cols-1 grid-rows-[auto,1fr,auto] gap-4 overflow-x-hidden bg-foreground px-3 py-4 text-primary-foreground',
-          className,
-          {
-            'invisible w-0 opacity-0': closed,
-          },
-        )}
-        {...props}
+      <div
+        className={cn('transition-class h-full w-[300px] overflow-x-hidden', {
+          'invisible w-0': closed,
+        })}
       >
-        <Button variant="secondary" className="w-full shrink-0">
-          New Chat
-        </Button>
-        <div className="overflow-auto">
-          <AllChats chats={chats} />
-          <StarMessages />
-        </div>
-        <ProFeature role="free">
-          <Upgrade />
-        </ProFeature>
-      </aside>
+        <aside
+          className={cn(
+            'transition-class visible grid h-full w-[300px] grid-cols-1 grid-rows-[auto,1fr,auto] gap-4 overflow-x-hidden bg-foreground px-3 py-4 text-primary-foreground',
+            className,
+          )}
+          {...props}
+        >
+          <Button variant="secondary" className="w-full shrink-0">
+            New Chat
+          </Button>
+          <div className="overflow-auto">
+            <AllChats chats={chats} />
+            <StarMessages />
+          </div>
+          <ProFeature role="free">
+            <Upgrade />
+          </ProFeature>
+        </aside>
+      </div>
       <div className="flex h-full items-center justify-center text-accent">
         <Tooltip title={`${closed ? 'Open' : 'Close'} sidebar`}>
           <OpenPanelIcon
             onClick={toggle}
             size={20}
             className={cn({
-              'rotate-180': closed,
+              'ml-2 rotate-180': closed,
             })}
           />
         </Tooltip>
