@@ -34,6 +34,7 @@ const AuthHero: FC<AuthHeroProps> = ({ className, ...props }) => {
                   hidden: { opacity: 0, scale: 0 },
                   visible: { opacity: 1, scale: 1 },
                 }}
+                className="h-fit w-fit"
               >
                 <h1 className="text-4xl font-bold">Read Document,Better</h1>
               </Reveal>
