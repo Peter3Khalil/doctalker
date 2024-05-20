@@ -1,8 +1,9 @@
 'use client';
 import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import Wrapper from './Wrapper';
+import { useInView } from 'framer-motion';
 interface DocumentViewerProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;
 }
@@ -12,12 +13,23 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
   src,
   ...props
 }) => {
-  const { isPdfShown } = useGlobalContext();
+  const { isPdfShown, setTap } = useGlobalContext();
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, {
+    amount: 1,
+  });
+  useEffect(() => {
+    if (isInView) {
+      setTap('document');
+    }
+  }, [isInView, setTap]);
   return (
     <Wrapper
       className={cn('transition-class flex flex-col', className, {
-        'invisible w-0 flex-none': !isPdfShown,
+        'invisible flex-none overflow-hidden md:w-0 md:flex-none': !isPdfShown,
       })}
+      id="document"
+      ref={ref}
       {...props}
     >
       <iframe

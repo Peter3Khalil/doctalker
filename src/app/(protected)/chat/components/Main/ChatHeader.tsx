@@ -30,13 +30,15 @@ const ChatHeader: FC<ChatHeaderProps> = ({ className, ...props }) => {
         <Logo href="/chat" />
       </div>
       <div className="flex items-center gap-2 text-accent">
-        <Tooltip title={isPdfShown ? 'Hide Document' : 'View Document'}>
-          {isPdfShown ? (
-            <HideIcon onClick={togglePdf} />
-          ) : (
-            <ViewIcon onClick={togglePdf} />
-          )}
-        </Tooltip>
+        <div className="hidden md:block">
+          <Tooltip title={isPdfShown ? 'Hide Document' : 'View Document'}>
+            {isPdfShown ? (
+              <HideIcon onClick={togglePdf} />
+            ) : (
+              <ViewIcon onClick={togglePdf} />
+            )}
+          </Tooltip>
+        </div>
 
         <figure className="size-6 rounded-full bg-slate-100"></figure>
       </div>

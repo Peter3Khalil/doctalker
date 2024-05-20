@@ -39,9 +39,9 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
   return (
     <div
       className={cn(
-        'transition-class fixed left-0 top-0 mr-3 flex h-full w-full gap-0 overflow-x-hidden md:static md:w-[400px] md:gap-2',
+        'transition-class fixed left-0 top-0 flex h-full w-full gap-0 overflow-x-hidden md:static md:mr-3 md:w-[300px] md:gap-2',
         {
-          'mr-0 w-0 md:w-0': isSidebarClosed,
+          'w-0 md:mr-0 md:w-0': isSidebarClosed,
         },
       )}
       onMouseEnter={handleMouseEnter}
