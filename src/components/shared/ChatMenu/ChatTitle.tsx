@@ -22,7 +22,7 @@ const ChatTitle: FC<ChatTitleProps> = ({
       id={ChatTitle.name}
       onClick={toggleCollapse}
       className={cn(
-        'sticky top-0 z-10 mb-2  flex w-full cursor-pointer items-center gap-2 rounded bg-accent-foreground px-2 py-2 text-lg font-semibold text-primary-foreground',
+        'sticky top-0 z-10 mb-2 flex w-full cursor-pointer items-center gap-2 rounded bg-accent-foreground px-2 py-2 text-[1em] font-semibold text-primary-foreground',
         {
           'opacity-50': collapse,
           'overflow-hidden': hasOverFlow,

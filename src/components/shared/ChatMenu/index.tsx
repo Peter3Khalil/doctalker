@@ -25,7 +25,7 @@ const ChatMenu: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   );
   return (
     <ChatMenuContext.Provider value={{ collapse, toggleCollapse }}>
-      <div className={cn('min-h-0 w-full pr-1', className)} {...props}>
+      <div className={cn('min-h-0 w-full pr-1 text-xl', className)} {...props}>
         {children}
       </div>
     </ChatMenuContext.Provider>

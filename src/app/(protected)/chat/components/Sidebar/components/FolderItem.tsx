@@ -16,11 +16,13 @@ const FolderItem: FC<FolderItemProps> = ({
       <ChatMenu.ChatMenu>
         <ChatMenu.ChatTitle
           icon={<ChatWithFolderIcon className="shrink-0" size={14} />}
-          className="static w-full border-l-2 text-sm"
+          className="static w-full border-l-2 text-[0.8em]"
         >
           {name}
         </ChatMenu.ChatTitle>
-        <ChatMenu.ChatList>{children}</ChatMenu.ChatList>
+        <ChatMenu.ChatList className="text-[0.85em]">
+          {children}
+        </ChatMenu.ChatList>
       </ChatMenu.ChatMenu>
     </ChatMenu.ChatItem>
   );

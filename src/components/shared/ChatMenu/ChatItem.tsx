@@ -9,7 +9,7 @@ const ChatItem = React.forwardRef<
     <li
       ref={ref}
       className={cn(
-        'flex w-full items-center gap-2 text-nowrap py-2 text-sm',
+        'flex w-full items-center gap-2 text-nowrap py-2 text-[0.8em] font-semibold',
         className,
       )}
       {...props}
