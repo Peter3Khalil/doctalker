@@ -25,11 +25,25 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
   const [closed, setClosed] = useState(false);
   const toggle = useCallback(() => setClosed((prev: boolean) => !prev), []);
+  const handleMouseEnter = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.currentTarget.classList.remove('scroll-opacity-0');
+    },
+    [],
+  );
+  const handleMouseLeave = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.currentTarget.classList.add('scroll-opacity-0');
+    },
+    [],
+  );
   return (
     <div
       className={cn('flex h-full w-fit', {
         'gap-2': !closed,
       })}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div
         className={cn('transition-class h-full w-[300px] overflow-x-hidden', {
