@@ -21,4 +21,5 @@ export {
   ChevronRight as ArrowRightIcon,
   Gem as ProIcon,
   PanelRightOpen as OpenPanelIcon,
+  AlignJustify as MenuIcon,
 } from 'lucide-react';

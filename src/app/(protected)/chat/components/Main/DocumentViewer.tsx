@@ -1,7 +1,7 @@
 'use client';
+import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
-import React, { FC, useContext } from 'react';
-import { MainContext } from '.';
+import React, { FC } from 'react';
 import Wrapper from './Wrapper';
 interface DocumentViewerProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;
@@ -12,11 +12,11 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
   src,
   ...props
 }) => {
-  const { isShown } = useContext(MainContext);
+  const { isPdfShown } = useGlobalContext();
   return (
     <Wrapper
       className={cn('transition-class flex flex-col', className, {
-        'invisible w-0 flex-none': !isShown,
+        'invisible w-0 flex-none': !isPdfShown,
       })}
       {...props}
     >

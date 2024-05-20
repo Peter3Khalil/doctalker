@@ -1,10 +1,10 @@
-import React, { FC, useContext } from 'react';
-import Wrapper from './Wrapper';
+import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
-import { MainContext } from '.';
+import React, { FC } from 'react';
+import Wrapper from './Wrapper';
 interface ChatViewerProps extends React.HTMLAttributes<HTMLDivElement> {}
 const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
-  const { isShown } = useContext(MainContext);
+  const { isPdfShown } = useGlobalContext();
   return (
     <Wrapper
       className={cn('overflow-auto overflow-x-hidden', className)}
@@ -12,7 +12,7 @@ const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
     >
       <div
         className={cn('h-full w-full', {
-          'mx-auto w-full max-w-[800px] bg-red-400': !isShown,
+          'mx-auto w-full max-w-[800px] bg-red-400': !isPdfShown,
         })}
       >
         <div className="h-[600vh] w-full bg-primary"></div>
