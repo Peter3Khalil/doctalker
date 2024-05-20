@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import React, { FC, useEffect, useRef } from 'react';
 import Wrapper from './Wrapper';
 import { useInView } from 'framer-motion';
+import useMediaQuery from '@/hooks/useMediaQuery';
 interface DocumentViewerProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;
 }
@@ -13,7 +14,8 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
   src,
   ...props
 }) => {
-  const { isPdfShown, setTap } = useGlobalContext();
+  const { isPdfShown, setTap, togglePdf } = useGlobalContext();
+  const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
     amount: 1,
@@ -23,6 +25,12 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
       setTap('document');
     }
   }, [isInView, setTap]);
+  useEffect(() => {
+    // Always show pdf on Mobile
+    if (isMobile && !isPdfShown) {
+      togglePdf();
+    }
+  }, [isMobile, isPdfShown, togglePdf]);
   return (
     <Wrapper
       className={cn('transition-class flex flex-col', className, {
