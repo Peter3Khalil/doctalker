@@ -1,13 +1,13 @@
 import { StarIcon } from '@/components/shared/Icons';
 import React, { FC } from 'react';
-import * as ChatMenu from '../../../../../components/shared/ChatMenu';
+import ChatMenu from '@/components/shared/ChatMenu';
 import SingleChatItem from './components/SingleChatItem';
 const StarMessages: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props
 }) => {
   return (
-    <ChatMenu.ChatMenu className={className} {...props}>
+    <ChatMenu className={className} {...props}>
       <ChatMenu.ChatTitle icon={<StarIcon size={16} />}>
         Stars
       </ChatMenu.ChatTitle>
@@ -18,7 +18,7 @@ const StarMessages: FC<React.HTMLAttributes<HTMLDivElement>> = ({
           </SingleChatItem>
         ))}
       </ChatMenu.ChatList>
-    </ChatMenu.ChatMenu>
+    </ChatMenu>
   );
 };
 

@@ -3,7 +3,7 @@ import { ChatIcon } from '@/components/shared/Icons';
 import useResizeObserver from '@/hooks/useResizeObserver';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
-import * as ChatMenu from '../../../../../../components/shared/ChatMenu';
+import ChatMenu from '@/components/shared/ChatMenu';
 interface SingleChatItemProps extends React.HTMLAttributes<HTMLLIElement> {
   children: string;
 }

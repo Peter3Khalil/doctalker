@@ -1,9 +1,9 @@
 'use client';
-import React, { FC, createContext, useCallback, useState } from 'react';
+import { cn } from '@/lib/utils';
+import React, { createContext, useCallback, useState } from 'react';
+import ChatItem from './ChatItem';
 import ChatList from './ChatList';
 import ChatTitle from './ChatTitle';
-import ChatItem from './ChatItem';
-import { cn } from '@/lib/utils';
 type ChatMenuContextType = {
   collapse: boolean;
   toggleCollapse: () => void;
@@ -13,11 +13,11 @@ export const ChatMenuContext = createContext<ChatMenuContextType>({
   toggleCollapse: () => null,
 });
 
-const ChatMenu: FC<React.HTMLAttributes<HTMLDivElement>> = ({
+const ChatMenu = ({
   children,
   className,
   ...props
-}) => {
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
   const [collapse, setCollapse] = useState(true);
   const toggleCollapse = useCallback(
     () => setCollapse((prevCollapse) => !prevCollapse),
@@ -31,9 +31,8 @@ const ChatMenu: FC<React.HTMLAttributes<HTMLDivElement>> = ({
     </ChatMenuContext.Provider>
   );
 };
+ChatMenu.ChatTitle = ChatTitle;
+ChatMenu.ChatList = ChatList;
+ChatMenu.ChatItem = ChatItem;
 
-ChatMenu.displayName = 'Chat Menu';
-ChatList.displayName = 'Chat List';
-ChatTitle.displayName = 'Chat Title';
-ChatItem.displayName = 'Chat Item';
-export { ChatList, ChatMenu, ChatTitle, ChatItem };
+export default ChatMenu;
