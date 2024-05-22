@@ -8,7 +8,7 @@ const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
   const { isPdfShown, setTap } = useGlobalContext();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
-    amount: 1,
+    amount: 0.8,
   });
   useEffect(() => {
     if (isInView) {
