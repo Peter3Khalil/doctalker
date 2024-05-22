@@ -1,8 +1,9 @@
 import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
-import React, { FC, useEffect, useRef } from 'react';
-import Wrapper from './Wrapper';
 import { useInView } from 'framer-motion';
+import React, { FC, useEffect, useRef } from 'react';
+import Wrapper from '../Wrapper';
+import ChatTextarea from './ChatTextarea';
 interface ChatViewerProps extends React.HTMLAttributes<HTMLDivElement> {}
 const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
   const { isPdfShown, setTap } = useGlobalContext();
@@ -10,6 +11,7 @@ const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
   const isInView = useInView(ref, {
     amount: 0.8,
   });
+
   useEffect(() => {
     if (isInView) {
       setTap('chat');
@@ -23,11 +25,17 @@ const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
       {...props}
     >
       <div
-        className={cn('h-full w-full text-accent', {
+        className={cn('flex h-full w-full flex-col text-accent', {
           'mx-auto w-full max-w-[800px]': !isPdfShown,
         })}
       >
-        Chat
+        <div className={cn('hide-scrollbar flex-1 overflow-auto')}>
+          <div className="flex h-[200vh] flex-col">
+            <div className="flex-1">Chat</div>
+            <div className="h-20">Footer</div>
+          </div>
+        </div>
+        <ChatTextarea />
       </div>
     </Wrapper>
   );
