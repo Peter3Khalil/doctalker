@@ -78,7 +78,7 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.2);
+  background: hsl(var(--primary) / 0.8);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {

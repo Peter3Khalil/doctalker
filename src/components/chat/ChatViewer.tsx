@@ -2,7 +2,7 @@ import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
 import { useInView } from 'framer-motion';
 import React, { FC, useEffect, useRef } from 'react';
-import Wrapper from '../Wrapper';
+import Wrapper from './Wrapper';
 import Message from './Message';
 import Textarea from './Textarea';
 interface ChatViewerProps extends React.HTMLAttributes<HTMLDivElement> {}

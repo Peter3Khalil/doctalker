@@ -22,4 +22,6 @@ export {
   Gem as ProIcon,
   PanelRightOpen as OpenPanelIcon,
   AlignJustify as MenuIcon,
+  FilePlus as AddFileIcon,
+  PanelsLeftBottom as SidebarIcon,
 } from 'lucide-react';

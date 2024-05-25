@@ -1,7 +1,7 @@
+import ChatMenu from '@/components/shared/ChatMenu';
 import { StarIcon } from '@/components/shared/Icons';
 import React, { FC } from 'react';
-import ChatMenu from '@/components/shared/ChatMenu';
-import SingleChatItem from './components/SingleChatItem';
+import SingleChatItem from './SingleChatItem';
 const StarMessages: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props

@@ -11,7 +11,7 @@ type GlobalContextType = {
 };
 const GlobalContext = createContext<GlobalContextType>({
   isPdfShown: true,
-  isSidebarClosed: true,
+  isSidebarClosed: false,
   toggleSidebar: () => {},
   togglePdf: () => {},
   currentTap: 'chat',
@@ -20,7 +20,7 @@ const GlobalContext = createContext<GlobalContextType>({
 
 const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
   const [isPdfShown, setIsPdfShown] = React.useState(true);
-  const [isSidebarClosed, setIsSidebarClosed] = React.useState(true);
+  const [isSidebarClosed, setIsSidebarClosed] = React.useState(false);
   const [currentTap, setCurrentTap] = React.useState<'chat' | 'document'>(
     'chat',
   );

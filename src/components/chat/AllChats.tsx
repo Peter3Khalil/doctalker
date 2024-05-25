@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
 import ChatMenu from '@/components/shared/ChatMenu';
-import FolderItem from './components/FolderItem';
-import SingleChatItem from './components/SingleChatItem';
+import React, { FC } from 'react';
+import FolderItem from './FolderItem';
+import SingleChatItem from './SingleChatItem';
 interface AllChatsProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   chats: (string | string[])[];
 }
