@@ -18,7 +18,7 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
-    amount: 1,
+    amount: 0.8,
   });
   useEffect(() => {
     if (isInView) {

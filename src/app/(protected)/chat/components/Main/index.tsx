@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import ChatHeader from './ChatHeader';
 import ChatViewer from './ChatViewer';
 import DocumentViewer from './DocumentViewer';
-import Taps from './Taps';
+import Tabs from './Tabs';
 
 const Main: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
@@ -13,7 +13,7 @@ const Main: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   return (
     <div className="flex h-full w-full flex-1 flex-col gap-3">
       <ChatHeader />
-      <Taps />
+      <Tabs />
       <main
         id="main"
         className={cn(

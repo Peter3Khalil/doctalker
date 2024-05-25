@@ -3,7 +3,7 @@ import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-const Taps: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+const Tabs: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props
 }) => {
@@ -42,4 +42,4 @@ const Taps: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   );
 };
 
-export default Taps;
+export default Tabs;
