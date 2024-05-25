@@ -15,8 +15,9 @@ const Main: FC<React.HTMLAttributes<HTMLDivElement>> = ({
       <ChatHeader />
       <Taps />
       <main
+        id="main"
         className={cn(
-          'hide-scrollbar flex h-full snap-x snap-mandatory overflow-auto bg-accent-foreground md:snap-none',
+          'flex h-full snap-x snap-mandatory overflow-auto md:snap-none',
           className,
         )}
         {...props}

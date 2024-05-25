@@ -12,7 +12,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({ className, ...props }) => {
   return (
     <header
       className={cn(
-        'flex items-center justify-between border-b bg-accent-foreground p-3 pr-6',
+        'flex items-center justify-between bg-accent-foreground p-3 pr-6',
         className,
       )}
       {...props}

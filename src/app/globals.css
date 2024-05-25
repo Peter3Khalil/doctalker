@@ -63,7 +63,10 @@ body {
 .hide-scrollbar *::-webkit-scrollbar {
   display: none;
 }
-
+.show-scrollbar::-webkit-scrollbar,
+.show-scrollbar *::-webkit-scrollbar {
+  display: block;
+}
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -147,4 +150,10 @@ body {
   background-size: 500% 500%;
   animation: gradient 4s ease infinite;
   -webkit-animation: gradient 4s ease infinite;
+}
+
+@media screen and (max-width: 768px) {
+  #main::-webkit-scrollbar {
+    display: none;
+  }
 }

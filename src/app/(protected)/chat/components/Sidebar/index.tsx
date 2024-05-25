@@ -49,7 +49,7 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
     >
       <aside
         className={cn(
-          'transition-class visible grid h-full w-full grid-cols-1 grid-rows-[auto,1fr,auto] gap-4 overflow-x-hidden bg-foreground px-3 py-4 text-primary-foreground',
+          'transition-class visible grid h-full w-full grid-cols-1 grid-rows-[auto,1fr,auto] gap-4 overflow-x-hidden bg-accent-foreground px-3 py-4 text-primary-foreground',
           className,
           {
             'invisible w-0': isSidebarClosed,

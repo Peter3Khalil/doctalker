@@ -9,7 +9,7 @@ const Wrapper = React.forwardRef<
     <section
       ref={ref}
       className={cn(
-        'h-full w-full shrink-0 snap-start border border-primary md:w-0 md:flex-1 md:shrink md:snap-normal',
+        'h-full w-full shrink-0 snap-start md:w-0 md:flex-1 md:shrink md:snap-normal',
         className,
       )}
       {...props}

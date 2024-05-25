@@ -7,7 +7,7 @@ const Layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="h-[100svh] w-full bg-accent-foreground">
+    <div className="h-[100svh] w-full bg-foreground">
       <GlobalProvider>
         <PrivateRoute>{children}</PrivateRoute>
       </GlobalProvider>

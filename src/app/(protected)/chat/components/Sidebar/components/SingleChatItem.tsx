@@ -16,10 +16,7 @@ const SingleChatItem: FC<SingleChatItemProps> = ({
   const { hasOverFlow } = useResizeObserver({ ref });
   return (
     <ChatMenu.ChatItem
-      className={cn(
-        'cursor-pointer rounded px-3 hover:bg-accent-foreground',
-        className,
-      )}
+      className={cn('cursor-pointer rounded px-3 hover:bg-muted/10', className)}
       ref={ref}
       {...props}
     >
