@@ -7,6 +7,7 @@ const logoVariants = cva('', {
     variant: {
       default: 'gradient to-background bg-clip-text text-transparent',
       primary: 'gradient to-primary bg-clip-text text-transparent',
+      normal: 'text-primary dark:text-secondary-foreground',
     },
   },
   defaultVariants: {

@@ -14,9 +14,9 @@ const Layout = ({
     <GlobalProvider>
       <PrivateRoute>
         <ThemeProvider>
-          <div className="h-[100svh] w-full bg-foreground">
-            <Sidebar />
-            <Header />
+          <Sidebar />
+          <Header />
+          <div className="min-h-svh w-full bg-accent text-accent-foreground">
             <Main>{children}</Main>
           </div>
         </ThemeProvider>

@@ -16,6 +16,7 @@ import SingleChatItem from './SingleChatItem';
 import { CHATS } from '@/constants/chats';
 import { usePathname } from 'next/navigation';
 import withTooltip from '@/HOCs/withTooltip';
+import { ICON_SIZE } from '@/constants';
 const ButtonWithTooltip = withTooltip(Button);
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: never;
@@ -38,23 +39,20 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
         <section className="flex h-[60px] w-full shrink-0 items-center justify-between px-4">
           <ButtonWithTooltip
             tooltipContent="Close Sidebar"
-            variant={'outline'}
+            variant={'normal'}
             size={'sm'}
-            className="border-none"
+            className="hover:hover-accent"
           >
-            <SidebarIcon
-              onClick={toggleSidebar}
-              className="size-6 cursor-pointer"
-            />
+            <SidebarIcon onClick={toggleSidebar} size={ICON_SIZE} />
           </ButtonWithTooltip>
           <Link href="/chat">
             <ButtonWithTooltip
               tooltipContent="New Chat"
-              variant={'outline'}
+              variant={'normal'}
               size={'sm'}
-              className="border-none"
+              className="hover:hover-accent"
             >
-              <AddFileIcon className="size-6" />
+              <AddFileIcon size={ICON_SIZE} />
             </ButtonWithTooltip>
           </Link>
         </section>

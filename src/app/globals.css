@@ -58,8 +58,14 @@
   .custom-shadow {
     box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
   }
-  .bg-hover {
-    @apply bg-muted transition-all duration-300 ease-in-out;
+  .hover-muted-1 {
+    @apply transition-class hover:bg-muted-foreground/10;
+  }
+  .hover-muted-2 {
+    @apply transition-class hover:bg-muted-foreground/20;
+  }
+  .hover-accent {
+    @apply transition-class hover:bg-accent hover:text-accent-foreground;
   }
 }
 body {

@@ -11,14 +11,15 @@ const withTooltip = <T extends ComponentType<any>>(Component: T) => {
   type ComponentPropsWithTooltip = ComponentProps<T> &
     ComponentProps<typeof TooltipContent> & {
       tooltipContent: string;
+      asChild?: boolean;
     };
 
   const WithTooltip = (props: ComponentPropsWithTooltip) => {
-    const { tooltipContent, side, ...rest } = props;
+    const { tooltipContent, side, asChild=true,...rest } = props;
     return (
       <TooltipProvider>
         <Tooltip delayDuration={200}>
-          <TooltipTrigger asChild>
+          <TooltipTrigger asChild={asChild}>
             <Component {...(rest as ComponentProps<T>)} />
           </TooltipTrigger>
           <TooltipContent className="border-none" side={side}>

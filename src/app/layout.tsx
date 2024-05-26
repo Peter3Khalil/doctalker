@@ -17,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('font-sans antialiased', inter.variable)}>
+      <body
+        className={cn(
+          'custom-scroll-track min-h-svh font-sans antialiased',
+          inter.variable,
+        )}
+      >
         {children}
       </body>
     </html>
