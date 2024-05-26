@@ -51,7 +51,10 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
         <section className="flex h-[60px] w-full shrink-0 items-center justify-center bg-accent"></section>
       </div>
       {/* Blank Area */}
-      <div className="h-full w-[120px] bg-transparent lg:hidden"></div>
+      <div
+        onClick={toggleSidebar}
+        className="h-full w-[70px] max-w-[20%] bg-transparent lg:hidden"
+      ></div>
     </aside>
   );
 };

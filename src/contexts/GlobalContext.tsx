@@ -1,5 +1,6 @@
 'use client';
-import React, { createContext } from 'react';
+import useMediaQuery from '@/hooks/useMediaQuery';
+import React, { createContext, useEffect } from 'react';
 type GlobalContextType = {
   isPdfShown: boolean;
   isSidebarClosed: boolean;
@@ -34,7 +35,13 @@ const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
     () => setIsSidebarClosed((prev) => !prev),
     [],
   );
+  const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
   const togglePdf = React.useCallback(() => setIsPdfShown((prev) => !prev), []);
+  useEffect(() => {
+    if (isMobile && !isSidebarClosed) {
+      toggleSidebar();
+    }
+  }, [isMobile]);
   return (
     <GlobalContext.Provider
       value={{
