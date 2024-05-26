@@ -15,8 +15,8 @@ const FolderItem: FC<FolderItemProps> = ({
     <ChatMenu.ChatItem className={className} {...props}>
       <ChatMenu>
         <ChatMenu.ChatTitle
-          icon={<ChatWithFolderIcon className="shrink-0" size={14} />}
-          className="static w-full border-l-2 text-[0.8em]"
+          icon={ChatWithFolderIcon}
+          className="static w-full border-l-4 border-primary text-[0.8em]"
         >
           {name}
         </ChatMenu.ChatTitle>

@@ -11,7 +11,7 @@ const ChatList: FC<React.HTMLAttributes<HTMLUListElement>> = ({
   return (
     <ul
       className={cn(
-        'flex max-h-[90%] w-full flex-col gap-2 overflow-x-hidden pl-2 transition-all duration-500 ease-in-out',
+        'flex w-full flex-col gap-2 overflow-x-hidden pl-2 transition-all duration-500 ease-in-out',
         className,
         {
           'h-0 opacity-0': collapse,

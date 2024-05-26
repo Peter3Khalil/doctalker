@@ -50,10 +50,16 @@
 }
 @layer components {
   .gradient {
-    @apply bg-gradient-to-l from-primary to-foreground;
+    @apply bg-gradient-to-l from-primary to-foreground dark:from-primary dark:to-background;
   }
   .transition-class {
     @apply transition-all duration-300 ease-in-out;
+  }
+  .custom-shadow {
+    box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
+  }
+  .bg-hover {
+    @apply bg-muted transition-all duration-300 ease-in-out;
   }
 }
 body {
@@ -86,7 +92,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--foreground) / 0.8);
+  background: transparent;
 }
 .hero {
   background-image: url('/imgs/hero.webp');
@@ -120,9 +126,6 @@ body {
   -o-border-radius: var(--radius);
 }
 
-.custom-shadow {
-  box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
-}
 .bg-clip-text {
   -webkit-background-clip: text;
   background-clip: text;

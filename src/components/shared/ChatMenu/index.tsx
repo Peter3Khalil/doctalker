@@ -25,7 +25,7 @@ const ChatMenu = ({
   );
   return (
     <ChatMenuContext.Provider value={{ collapse, toggleCollapse }}>
-      <div className={cn('min-h-0 w-full pr-1 text-xl', className)} {...props}>
+      <div className={cn('min-h-0 w-full pr-1 text-lg', className)} {...props}>
         {children}
       </div>
     </ChatMenuContext.Provider>

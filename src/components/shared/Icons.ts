@@ -24,4 +24,5 @@ export {
   AlignJustify as MenuIcon,
   FilePlus as AddFileIcon,
   PanelsLeftBottom as SidebarIcon,
+  KeyRound as KeyIcon,
 } from 'lucide-react';
