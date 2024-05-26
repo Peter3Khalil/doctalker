@@ -41,7 +41,7 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
             tooltipContent="Close Sidebar"
             variant={'normal'}
             size={'sm'}
-            className="hover:hover-accent"
+            className="transition-class hover:bg-hover-accent"
           >
             <SidebarIcon onClick={toggleSidebar} size={ICON_SIZE} />
           </ButtonWithTooltip>
@@ -50,7 +50,7 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
               tooltipContent="New Chat"
               variant={'normal'}
               size={'sm'}
-              className="hover:hover-accent"
+              className="transition-class hover:bg-hover-accent"
             >
               <AddFileIcon size={ICON_SIZE} />
             </ButtonWithTooltip>

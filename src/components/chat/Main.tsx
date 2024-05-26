@@ -8,7 +8,7 @@ const Main: FC<MainProps> = ({ className, children, ...props }) => {
   return (
     <main
       className={cn(
-        'transition-class absolute right-0 z-10 h-full w-full bg-slate-400 pt-[60px] lg:w-[calc(100%-250px)]',
+        'transition-class absolute right-0 z-10 w-full bg-accent pt-[60px] text-accent-foreground lg:w-[calc(100%-250px)]',
         className,
         {
           'lg:w-full': isSidebarClosed,

@@ -15,7 +15,7 @@ const withTooltip = <T extends ComponentType<any>>(Component: T) => {
     };
 
   const WithTooltip = (props: ComponentPropsWithTooltip) => {
-    const { tooltipContent, side, asChild=true,...rest } = props;
+    const { tooltipContent, side, asChild = true, ...rest } = props;
     return (
       <TooltipProvider>
         <Tooltip delayDuration={200}>

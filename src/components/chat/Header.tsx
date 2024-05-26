@@ -14,7 +14,7 @@ import { Switch } from '../ui/switch';
 const ButtonWithTooltip = withTooltip(Button);
 const SwitchWithTooltip = withTooltip(Switch);
 const BUTTON_CLASS_NAME =
-  'bg-transparent text-accent-foreground hover:hover-muted-1';
+  'bg-transparent text-accent-foreground hover:bg-hover-muted transition-class';
 const Header = () => {
   const { isSidebarClosed, toggleSidebar } = useGlobalContext();
   const { theme, toggleTheme } = useThemeProvider();
@@ -65,7 +65,7 @@ const Header = () => {
           onCheckedChange={toggleTheme}
           checked={theme === 'dark'}
         />
-        <div className="hover-muted-2 cursor-pointer rounded-full p-2">
+        <div className="transition-class cursor-pointer rounded-full p-2 hover:bg-hover-muted">
           <Avatar className="size-8">
             <AvatarImage src="https://picsum.photos/200/200" />
             <AvatarFallback>CN</AvatarFallback>

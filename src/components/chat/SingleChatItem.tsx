@@ -18,7 +18,7 @@ const SingleChatItem: FC<SingleChatItemProps> = ({
   return (
     <ChatMenu.ChatItem
       className={cn(
-        'hover:hover-accent flex w-full cursor-pointer items-center rounded px-3',
+        'flex w-full cursor-pointer items-center rounded px-3 hover:bg-hover-accent',
         className,
         {
           'bg-muted': isActive,

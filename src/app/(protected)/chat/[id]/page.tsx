@@ -5,8 +5,8 @@ interface SpecificChatProps {
     id: string;
   };
 }
-const SpecificChat: FC<SpecificChatProps> = () => {
-  return <div>SpecificChat</div>;
+const SpecificChat: FC<SpecificChatProps> = ({ params: { id } }) => {
+  return <div>{id}</div>;
 };
 
 export default SpecificChat;

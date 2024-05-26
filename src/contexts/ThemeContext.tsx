@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext } from 'react';
+import React, { createContext, useLayoutEffect } from 'react';
 type ThemeContextType = {
   theme: 'dark' | 'light';
   toggleTheme: () => void;
@@ -14,6 +14,18 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const toggleTheme = React.useCallback(() => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
+  const countRender = React.useRef(0);
+  useLayoutEffect(() => {
+    countRender.current += 1;
+    if (countRender.current === 1) {
+      const localTheme = localStorage.getItem('theme') as 'dark' | 'light';
+      if (localTheme) {
+        setTheme(localTheme);
+      }
+    } else {
+      localStorage.setItem('theme', theme);
+    }
+  }, [theme]);
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className={theme}>{children}</div>
