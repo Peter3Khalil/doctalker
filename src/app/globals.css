@@ -71,8 +71,7 @@
 body {
   min-height: 100svh;
 }
-.hide-scrollbar::-webkit-scrollbar,
-.hide-scrollbar *::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .show-scrollbar::-webkit-scrollbar,

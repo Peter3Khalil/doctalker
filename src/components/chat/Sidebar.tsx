@@ -17,6 +17,7 @@ import { CHATS } from '@/constants/chats';
 import { usePathname } from 'next/navigation';
 import withTooltip from '@/HOCs/withTooltip';
 import { ICON_SIZE } from '@/constants';
+import { ScrollArea } from '../ui/scroll-area';
 const ButtonWithTooltip = withTooltip(Button);
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: never;
@@ -57,48 +58,50 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
           </Link>
         </section>
         {/* Chat List */}
-        <section className="flex w-full flex-1 flex-col items-center overflow-auto overflow-x-hidden pl-4 pr-1 *:shrink-0">
-          <ChatMenu className="hide-scrollbar w-full">
-            <ChatMenu.ChatTitle>Chats</ChatMenu.ChatTitle>
-            <ChatMenu.ChatList className="w-full">
-              {CHATS.map((item, i) => (
-                <>
-                  {Array.isArray(item.chatName) ? (
-                    <FolderItem key={i} name={item.chatName[0]}>
-                      {item.chatName.map((subItem, j) => (
+        <ScrollArea className="flex-1">
+          <section className="flex w-full flex-col items-center pl-4 pr-1 *:shrink-0">
+            <ChatMenu className="hide-scrollbar w-full">
+              <ChatMenu.ChatTitle>Chats</ChatMenu.ChatTitle>
+              <ChatMenu.ChatList className="w-full">
+                {CHATS.map((item, i) => (
+                  <>
+                    {Array.isArray(item.chatName) ? (
+                      <FolderItem key={i} name={item.chatName[0]}>
+                        {item.chatName.map((subItem, j) => (
+                          <SingleChatItem
+                            isActive={pathname.includes(subItem)}
+                            key={j}
+                          >
+                            {subItem}
+                          </SingleChatItem>
+                        ))}
+                      </FolderItem>
+                    ) : (
+                      <Link key={item.id} href={`/chat/${item.id}`} passHref>
                         <SingleChatItem
-                          isActive={pathname.includes(subItem)}
-                          key={j}
+                          isActive={pathname.includes(
+                            item.id as unknown as string,
+                          )}
                         >
-                          {subItem}
+                          {item.chatName}
                         </SingleChatItem>
-                      ))}
-                    </FolderItem>
-                  ) : (
-                    <Link key={item.id} href={`/chat/${item.id}`} passHref>
-                      <SingleChatItem
-                        isActive={pathname.includes(
-                          item.id as unknown as string,
-                        )}
-                      >
-                        {item.chatName}
-                      </SingleChatItem>
-                    </Link>
-                  )}
-                </>
-              ))}
-            </ChatMenu.ChatList>
-          </ChatMenu>
-          <ChatMenu className="hide-scrollbar w-full">
-            <ChatMenu.ChatTitle icon={StarIcon}>Stars</ChatMenu.ChatTitle>
-            <ChatMenu.ChatList className="w-full">
-              <SingleChatItem>Starred 1</SingleChatItem>
-              <SingleChatItem>Starred 2</SingleChatItem>
-              <SingleChatItem>Starred 3</SingleChatItem>
-              <SingleChatItem>Starred 4</SingleChatItem>
-            </ChatMenu.ChatList>
-          </ChatMenu>
-        </section>
+                      </Link>
+                    )}
+                  </>
+                ))}
+              </ChatMenu.ChatList>
+            </ChatMenu>
+            <ChatMenu className="hide-scrollbar w-full">
+              <ChatMenu.ChatTitle icon={StarIcon}>Stars</ChatMenu.ChatTitle>
+              <ChatMenu.ChatList className="w-full">
+                <SingleChatItem>Starred 1</SingleChatItem>
+                <SingleChatItem>Starred 2</SingleChatItem>
+                <SingleChatItem>Starred 3</SingleChatItem>
+                <SingleChatItem>Starred 4</SingleChatItem>
+              </ChatMenu.ChatList>
+            </ChatMenu>
+          </section>
+        </ScrollArea>
         {/* CTA */}
         <section className="flex min-h-[60px] w-full shrink-0 items-center justify-center bg-inherit px-3 py-2">
           <Button className="gradient dark:custom-shadow w-full gap-2">
