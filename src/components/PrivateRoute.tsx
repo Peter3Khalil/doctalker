@@ -1,23 +1,32 @@
 'use client';
-import { redirect } from 'next/navigation';
+import { isValidToken } from '@/features/authentication';
+import { useRouter } from 'next/navigation';
 import React, { useLayoutEffect, useState } from 'react';
 interface PrivateRouteProps {
   children: React.ReactNode;
 }
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
   useLayoutEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       setIsAuthenticated(false);
-      redirect('/login');
+      router.push('/login');
     } else {
       //validate token
-      setIsAuthenticated(true);
+      isValidToken(token).then((res) => {
+        if (res) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+          router.push('/login');
+        }
+      });
     }
-  }, []);
+  }, [router]);
   if (!isAuthenticated) {
-    return null;
+    return <p>Redirecting...</p>;
   }
   return <>{children}</>;
 };

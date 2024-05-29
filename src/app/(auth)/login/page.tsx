@@ -3,18 +3,22 @@ import InputField from '@/components/shared/InputField';
 import { Button } from '@/components/ui/button';
 import { LOGIN_FIELDS } from '@/constants/authPages';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import { login } from '@/features/authentication';
+import useMutate from '@/hooks/useMutate';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FC, useLayoutEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import FormContainer from '../components/FormContainer';
 import PageTitle from '../components/PageTitle';
+import LoadingBar from '@/components/shared/LoadingBar';
 type Inputs = {
   email: string;
   password: string;
 };
-interface PageProps {}
-const Login: FC<PageProps> = () => {
+const Login: FC = () => {
+  const { error, mutate, loading } = useMutate(login);
   const router = useRouter();
   const {
     register,
@@ -23,25 +27,26 @@ const Login: FC<PageProps> = () => {
   } = useForm<Inputs>({
     mode: 'onBlur',
   });
-  const onSubmit: SubmitHandler<Inputs> = () => {
-    localStorage.setItem('token', 'token');
-    //make user can not go back to login page
-    router.push('/chat');
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const res = await mutate(data);
+    if (!res) return;
+    localStorage.setItem('token', res?.token as string);
+    router.replace('/chat');
   };
-  useLayoutEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      router.push('/chat');
-    }
-  }, [router]);
+  useEffect(() => {
+    localStorage.removeItem('token');
+  }, []);
   return (
     <div className="flex w-full flex-col items-center">
-      <PageTitle>Login</PageTitle>
+      <div className="mb-8 flex flex-col items-center gap-1">
+        <PageTitle className="mb-0">Login</PageTitle>
+        {error && <p className="text-center text-destructive">{error}</p>}
+      </div>
       <FormContainer onSubmit={handleSubmit(onSubmit)}>
         {LOGIN_FIELDS.map((field, i) => (
           <fieldset key={i}>
             <InputField
-              isValid={isValid}
+              isValid={isValid && !error}
               field={field}
               register={register(field.name as keyof Inputs, {
                 required: 'This field is required',
@@ -52,8 +57,15 @@ const Login: FC<PageProps> = () => {
             />
           </fieldset>
         ))}
-        <Button className="mt-6 w-full text-lg" disabled={!isValid}>
-          Login
+        <Button
+          className={cn('mt-6 w-full text-lg')}
+          disabled={!isValid || loading}
+        >
+          {loading ? (
+            <LoadingBar color="#fff" width={30} height={30} />
+          ) : (
+            'Login'
+          )}
         </Button>
       </FormContainer>
       <p className="mt-4">
