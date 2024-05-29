@@ -1,3 +1,5 @@
+import { request } from '@/lib/request';
+
 export interface SignupResponse {
   status: string;
   data: User;
@@ -33,19 +35,12 @@ export const login = async ({
   email: string;
   password: string;
 }): Promise<User> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login`, {
+  const res = await request<User>({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/api/user/login`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email, password }),
+    data: { email, password },
   });
-  if (res.ok) {
-    return res.json();
-  } else {
-    const error = await res.json();
-    throw new Error(error.message);
-  }
+  return res;
 };
 
 export const signup = async ({
@@ -59,21 +54,12 @@ export const signup = async ({
   firstName: string;
   lastName: string;
 }): Promise<SignupResponse> => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password, firstName, lastName }),
-    },
-  );
-  if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error('Failed to signup');
-  }
+  const res = await request<SignupResponse>({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`,
+    method: 'POST',
+    data: { email, password, firstName, lastName },
+  });
+  return res;
 };
 
 export const logout = () => {
