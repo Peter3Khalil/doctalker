@@ -40,7 +40,7 @@ const Login: FC = () => {
     <div className="flex w-full flex-col items-center">
       <div className="mb-8 flex flex-col items-center gap-1">
         <PageTitle className="mb-0">Login</PageTitle>
-        {error && (
+        {!!error && (
           <p className="text-center text-destructive">
             Invalid email or password
           </p>

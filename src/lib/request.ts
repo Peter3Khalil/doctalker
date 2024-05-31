@@ -20,7 +20,8 @@ export const request = async <T>({
   });
 
   if (!response.ok) {
-    throw new Error(response.statusText);
+    const error = await response.json();
+    throw new Error(error.message);
   }
 
   return response.json();

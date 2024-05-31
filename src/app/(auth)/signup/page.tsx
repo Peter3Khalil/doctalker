@@ -3,28 +3,32 @@ import InputField from '@/components/shared/InputField';
 import { Button } from '@/components/ui/button';
 import { REGISTER_FIELDS } from '@/constants/authPages';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import { signup } from '@/features/authentication';
+import useMutate from '@/hooks/useMutate';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
+import React, { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import FormContainer from '../components/FormContainer';
 import PageTitle from '../components/PageTitle';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import LoadingBar from '@/components/shared/LoadingBar';
 type Inputs = {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   confirm_password: string;
 };
 const schema = yup
   .object({
-    first_name: yup
+    firstName: yup
       .string()
       .min(2, 'First Name must be at least 2 characters')
       .max(16, 'First Name must be at most 16 characters')
       .required('First Name is required'),
-    last_name: yup
+    lastName: yup
       .string()
       .min(2, 'Last Name must be at least 2 characters')
       .max(16, 'Last Name must be at most 16 characters')
@@ -36,6 +40,8 @@ const schema = yup
   .required();
 const SignUp = () => {
   const [isPasswordMatch, setIsPasswordMatch] = React.useState(false);
+  const router = useRouter();
+  const { error, mutate, loading } = useMutate(signup);
   const {
     register,
     handleSubmit,
@@ -45,14 +51,27 @@ const SignUp = () => {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
-  const watchPassword = watch('password');
-  const watchConfirmPassword = watch('confirm_password');
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const password = watch('password');
+  const confirmPassword = watch('confirm_password');
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const res = await mutate(
+      data as unknown as {
+        firstName: string;
+        lastName: string;
+        email: string;
+        password: string;
+      },
+    );
+    if (!res) return;
+    localStorage.setItem('token', res?.data.token as string);
+    router.replace('/chat');
   };
   useEffect(() => {
+    localStorage.removeItem('token');
+  }, []);
+  useEffect(() => {
     if (isValid) {
-      if (watchPassword === watchConfirmPassword) {
+      if (password === confirmPassword) {
         setIsPasswordMatch(true);
       } else {
         setIsPasswordMatch(false);
@@ -60,17 +79,24 @@ const SignUp = () => {
     } else {
       setIsPasswordMatch(false);
     }
-  }, [watchPassword, watchConfirmPassword, isValid]);
+  }, [password, confirmPassword, isValid]);
 
   const NAME_FIELDS = REGISTER_FIELDS.filter(
-    (field) => field.name === 'first_name' || field.name === 'last_name',
+    (field) => field.name === 'firstName' || field.name === 'lastName',
   );
   const OTHER_FIELDS = REGISTER_FIELDS.filter(
-    (field) => field.name !== 'first_name' && field.name !== 'last_name',
+    (field) => field.name !== 'firstName' && field.name !== 'lastName',
   );
   return (
     <div className="flex w-full flex-col items-center">
-      <PageTitle>Sign Up</PageTitle>
+      <div className="mb-8 flex flex-col items-center gap-1">
+        <PageTitle className="mb-0">Sign Up</PageTitle>
+        {!!error && (
+          <p className="text-center text-destructive">
+            Email already exists. Please try again with a different email
+          </p>
+        )}
+      </div>{' '}
       <FormContainer onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-2">
           {NAME_FIELDS.map((field, i) => (
@@ -111,7 +137,11 @@ const SignUp = () => {
           className="mt-6 w-full text-lg"
           disabled={!isValid || !isPasswordMatch}
         >
-          Sign Up
+          {loading ? (
+            <LoadingBar color="#fff" width={30} height={30} />
+          ) : (
+            'Sign Up'
+          )}
         </Button>
       </FormContainer>
       <p className="mt-4">
