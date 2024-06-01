@@ -2,13 +2,13 @@
 import { HideIcon, MenuIcon, ViewIcon } from '@/components/shared/Icons';
 import Logo from '@/components/shared/Logo';
 import Tooltip from '@/components/shared/Tooltip';
-import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
+import { useGlobalState } from '@/providers/state-provider';
 import React, { FC } from 'react';
 interface ChatHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 const ChatHeader: FC<ChatHeaderProps> = ({ className, ...props }) => {
   const { isPdfShown, togglePdf, isSidebarClosed, toggleSidebar } =
-    useGlobalContext();
+    useGlobalState();
   return (
     <header
       className={cn(

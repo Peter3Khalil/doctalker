@@ -1,10 +1,10 @@
-import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
+import { useGlobalState } from '@/providers/state-provider';
 import React from 'react';
 interface TextareaProps extends React.HTMLAttributes<HTMLDivElement> {}
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className }, ref) => {
-    const { isPdfShown } = useGlobalContext();
+    const { isPdfShown } = useGlobalState();
     return (
       <div
         className={cn(

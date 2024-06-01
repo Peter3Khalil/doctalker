@@ -1,7 +1,7 @@
 'use client';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import React, { createContext, useEffect, useLayoutEffect } from 'react';
-type GlobalContextType = {
+type StateContextType = {
   isPdfShown: boolean;
   isSidebarClosed: boolean;
   toggleSidebar: () => void;
@@ -10,7 +10,7 @@ type GlobalContextType = {
   // eslint-disable-next-line no-unused-vars
   setTap: (tap: 'chat' | 'document') => void;
 };
-const GlobalContext = createContext<GlobalContextType>({
+const StateContext = createContext<StateContextType>({
   isPdfShown: true,
   isSidebarClosed: false,
   toggleSidebar: () => {},
@@ -19,7 +19,7 @@ const GlobalContext = createContext<GlobalContextType>({
   setTap: () => {},
 });
 
-const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
+const StateProvider = ({ children }: { children: React.ReactNode }) => {
   const [isPdfShown, setIsPdfShown] = React.useState(true);
   const [isSidebarClosed, setIsSidebarClosed] = React.useState(false);
   const [currentTap, setCurrentTap] = React.useState<'chat' | 'document'>(
@@ -55,7 +55,7 @@ const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isSidebarClosed]);
   return (
-    <GlobalContext.Provider
+    <StateContext.Provider
       value={{
         isPdfShown,
         isSidebarClosed,
@@ -66,8 +66,10 @@ const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </StateContext.Provider>
   );
 };
-
-export { GlobalContext, GlobalProvider };
+const useGlobalState = () => {
+  return React.useContext(StateContext);
+};
+export { StateContext, StateProvider, useGlobalState };

@@ -1,50 +1,51 @@
 'use client';
+import withTooltip from '@/HOCs/withTooltip';
 import {
   AddFileIcon,
   KeyIcon,
   SidebarIcon,
   StarIcon,
 } from '@/components/shared/Icons';
-import useGlobalContext from '@/hooks/useGlobalContext';
+import { ICON_SIZE } from '@/constants';
+import { CHATS } from '@/constants/chats';
 import { cn } from '@/lib/utils';
+import { useGlobalState } from '@/providers/state-provider';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 import ChatMenu from '../shared/ChatMenu';
 import { Button } from '../ui/button';
+import { ScrollArea } from '../ui/scroll-area';
 import FolderItem from './FolderItem';
 import SingleChatItem from './SingleChatItem';
-import { CHATS } from '@/constants/chats';
-import { usePathname } from 'next/navigation';
-import withTooltip from '@/HOCs/withTooltip';
-import { ICON_SIZE } from '@/constants';
-import { ScrollArea } from '../ui/scroll-area';
 const ButtonWithTooltip = withTooltip(Button);
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: never;
 }
 const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
-  const { isSidebarClosed, toggleSidebar } = useGlobalContext();
+  const { isSidebarClosed, toggleSidebar } = useGlobalState();
   const pathname = usePathname();
   return (
     <aside
       className={cn(
-        'transition-class fixed left-0 top-0 z-50 flex h-full w-full overflow-y-auto overflow-x-hidden lg:w-[250px]',
+        'transition-class fixed left-0 top-0 z-30 flex h-full w-full overflow-y-auto overflow-x-hidden lg:static lg:w-[250px]',
         className,
         {
-          '-translate-x-full opacity-0': isSidebarClosed,
+          'w-0 min-w-0 lg:w-0': isSidebarClosed,
         },
       )}
       {...props}
     >
-      <div className="flex h-full flex-1 flex-col bg-background text-foreground">
+      <div className="flex flex-1 flex-col bg-background text-foreground">
         <section className="flex h-[60px] w-full shrink-0 items-center justify-between px-4">
           <ButtonWithTooltip
             tooltipContent="Close Sidebar"
             variant={'normal'}
             size={'sm'}
+            onClick={toggleSidebar}
             className="transition-class hover:bg-hover-accent"
           >
-            <SidebarIcon onClick={toggleSidebar} size={ICON_SIZE} />
+            <SidebarIcon size={ICON_SIZE} />
           </ButtonWithTooltip>
           <Link href="/chat">
             <ButtonWithTooltip
@@ -59,7 +60,7 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
         </section>
         {/* Chat List */}
         <ScrollArea className="flex-1">
-          <section className="flex w-full flex-col items-center pl-4 pr-1 *:shrink-0">
+          <section className="flex h-full w-full flex-col items-center pl-4 pr-1 *:shrink-0">
             <ChatMenu className="hide-scrollbar w-full">
               <ChatMenu.ChatTitle>Chats</ChatMenu.ChatTitle>
               <ChatMenu.ChatList className="w-full">

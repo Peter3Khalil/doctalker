@@ -25,4 +25,6 @@ export {
   FilePlus as AddFileIcon,
   PanelsLeftBottom as SidebarIcon,
   KeyRound as KeyIcon,
+  Moon as MoonIcon,
+  Sun as SunIcon,
 } from 'lucide-react';

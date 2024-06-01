@@ -1,35 +1,28 @@
 'use client';
-import useGlobalContext from '@/hooks/useGlobalContext';
-import { cn } from '@/lib/utils';
-import React from 'react';
-import { AddFileIcon, SidebarIcon } from '../shared/Icons';
-import useThemeProvider from '@/hooks/useThemeProvider';
-import { Button } from '../ui/button';
 import withTooltip from '@/HOCs/withTooltip';
 import { ICON_SIZE } from '@/constants';
+import { cn } from '@/lib/utils';
+import { useGlobalState } from '@/providers/state-provider';
 import Link from 'next/link';
+import ThemeChanger from '../ThemeChanger';
+import { AddFileIcon, SidebarIcon } from '../shared/Icons';
 import Logo from '../shared/Logo';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Switch } from '../ui/switch';
+import { Button } from '../ui/button';
 const ButtonWithTooltip = withTooltip(Button);
-const SwitchWithTooltip = withTooltip(Switch);
 const BUTTON_CLASS_NAME =
   'bg-transparent text-accent-foreground hover:bg-hover-muted transition-class';
 const Header = () => {
-  const { isSidebarClosed, toggleSidebar } = useGlobalContext();
-  const { theme, toggleTheme } = useThemeProvider();
+  const { isSidebarClosed, toggleSidebar } = useGlobalState();
   return (
     <header
       className={cn(
-        'transition-class fixed right-0 top-0 z-30 flex h-[60px] w-full items-center justify-between bg-transparent px-6 backdrop-blur-sm lg:w-[calc(100%-250px)]',
-        {
-          'lg:w-full': isSidebarClosed,
-        },
+        'transition-class flex w-full items-center justify-between border-b bg-background px-3 py-2 md:px-6',
       )}
     >
       <div className="flex items-center gap-2">
         <div
-          className={cn('hidden w-fit items-center gap-1 lg:flex', {
+          className={cn('w-fit items-center gap-1 lg:flex', {
             'lg:hidden': !isSidebarClosed,
           })}
         >
@@ -47,7 +40,7 @@ const Header = () => {
               tooltipContent="New Chat"
               variant="normal"
               size={'sm'}
-              className={BUTTON_CLASS_NAME}
+              className={cn(BUTTON_CLASS_NAME, 'hidden lg:block')}
             >
               <AddFileIcon size={ICON_SIZE} />
             </ButtonWithTooltip>
@@ -55,16 +48,8 @@ const Header = () => {
         </div>
         <Logo href="/chat" variant={'normal'} />
       </div>
-      {/* <Button onClick={toggleTheme} variant="secondary">
-        {theme === 'dark' ? 'You are in Dark' : 'You are in Light'}
-      </Button> */}
       <div className="flex items-center gap-2">
-        <SwitchWithTooltip
-          asChild={false}
-          tooltipContent={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-          onCheckedChange={toggleTheme}
-          checked={theme === 'dark'}
-        />
+        <ThemeChanger />
         <div className="transition-class cursor-pointer rounded-full p-2 hover:bg-hover-muted">
           <Avatar className="size-8">
             <AvatarImage src="https://picsum.photos/200/200" />

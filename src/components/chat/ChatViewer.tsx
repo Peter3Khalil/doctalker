@@ -1,13 +1,13 @@
-import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
+import { useGlobalState } from '@/providers/state-provider';
 import { useInView } from 'framer-motion';
 import React, { FC, useEffect, useRef } from 'react';
-import Wrapper from './Wrapper';
 import Message from './Message';
 import Textarea from './Textarea';
+import Wrapper from './Wrapper';
 interface ChatViewerProps extends React.HTMLAttributes<HTMLDivElement> {}
 const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
-  const { isPdfShown, setTap } = useGlobalContext();
+  const { isPdfShown, setTap } = useGlobalState();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
     amount: 1,

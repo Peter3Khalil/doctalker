@@ -1,13 +1,13 @@
 'use client';
-import useGlobalContext from '@/hooks/useGlobalContext';
 import { cn } from '@/lib/utils';
+import { useGlobalState } from '@/providers/state-provider';
 import React from 'react';
 
 const Tabs: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props
 }) => {
-  const { currentTap } = useGlobalContext();
+  const { currentTap } = useGlobalState();
   return (
     <div
       className={cn(
