@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-
+import NextTopLoader from 'nextjs-toploader';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
@@ -23,6 +23,7 @@ export default function RootLayout({
           inter.variable,
         )}
       >
+        <NextTopLoader color="#7c3aed" showSpinner={false} />
         {children}
       </body>
     </html>
