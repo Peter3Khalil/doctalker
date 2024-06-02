@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import NextTopLoader from 'nextjs-toploader';
+import { Toaster } from '@/components/ui/toaster';
+import MyQueryClientProvider from '@/providers/query-client-provider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
@@ -23,8 +25,11 @@ export default function RootLayout({
           inter.variable,
         )}
       >
-        <NextTopLoader color="#7c3aed" showSpinner={false} />
-        {children}
+        <MyQueryClientProvider>
+          <NextTopLoader color="#7c3aed" showSpinner={false} />
+          {children}
+          <Toaster />
+        </MyQueryClientProvider>
       </body>
     </html>
   );

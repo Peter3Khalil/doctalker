@@ -1,6 +1,6 @@
 import Header from '@/components/chat/Header';
-import Main from '@/components/chat/Main';
 import Sidebar from '@/components/chat/Sidebar';
+import PrivateRoute from '@/components/PrivateRoute';
 import { StateProvider } from '@/providers/state-provider';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { Metadata } from 'next';
@@ -21,16 +21,18 @@ const Layout = ({
         enableSystem
         disableTransitionOnChange
       >
-        <div className="flex h-svh w-full">
-          <Sidebar className="shrink-0" />
-          <div className="flex h-full w-full flex-col">
-            <Header />
-            <Main>{children}</Main>
+        <PrivateRoute>
+          <div className="flex h-svh w-full">
+            <Sidebar className="shrink-0" />
+            <div className="flex h-full w-full flex-col">
+              <Header />
+              <main className="h-[calc(100%-4rem)] w-full bg-accent text-accent-foreground">
+                {children}
+              </main>
+            </div>
           </div>
-        </div>
+        </PrivateRoute>
       </ThemeProvider>
-      {/* <PrivateRoute>
-      </PrivateRoute> */}
     </StateProvider>
   );
 };

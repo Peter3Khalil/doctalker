@@ -1,31 +1,25 @@
 'use client';
 import { isValidToken } from '@/features/authentication';
 import { useRouter } from 'next/navigation';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useQuery } from 'react-query';
 interface PrivateRouteProps {
   children: React.ReactNode;
 }
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
-  useLayoutEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
+  const { isLoading } = useQuery('validate-token', isValidToken, {
+    onSuccess() {
+      setIsAuthenticated(true);
+    },
+    onError() {
       setIsAuthenticated(false);
       router.push('/login');
-    } else {
-      //validate token
-      isValidToken(token).then((res) => {
-        if (res) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(false);
-          router.push('/login');
-        }
-      });
-    }
-  }, [router]);
-  if (!isAuthenticated) {
+    },
+  });
+
+  if (!isAuthenticated || isLoading) {
     return <p>Redirecting...</p>;
   }
   return <>{children}</>;

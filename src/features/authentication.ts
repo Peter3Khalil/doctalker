@@ -1,5 +1,4 @@
-import { request } from '@/lib/request';
-
+import client from './client';
 export interface SignupResponse {
   status: string;
   data: User;
@@ -35,12 +34,8 @@ export const login = async ({
   email: string;
   password: string;
 }): Promise<User> => {
-  const res = await request<User>({
-    url: `${process.env.NEXT_PUBLIC_API_URL}/api/user/login`,
-    method: 'POST',
-    data: { email, password },
-  });
-  return res;
+  const res = await client.post('/api/user/login', { email, password });
+  return res.data;
 };
 
 export const signup = async ({
@@ -54,12 +49,13 @@ export const signup = async ({
   firstName: string;
   lastName: string;
 }): Promise<SignupResponse> => {
-  const res = await request<SignupResponse>({
-    url: `${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`,
-    method: 'POST',
-    data: { email, password, firstName, lastName },
+  const res = await client.post('/api/user/signup', {
+    email,
+    password,
+    firstName,
+    lastName,
   });
-  return res;
+  return res.data;
 };
 
 export const logout = () => {
@@ -67,19 +63,7 @@ export const logout = () => {
   window.location.href = '/login';
 };
 
-export const isValidToken = async (token: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/user/verifyToken`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  );
-  if (res.ok) {
-    return true;
-  } else {
-    return false;
-  }
+export const isValidToken = async () => {
+  const res = await client.get('/api/user/verifyToken');
+  return res.data;
 };

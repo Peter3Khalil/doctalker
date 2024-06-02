@@ -1,10 +1,9 @@
 'use client';
 import InputField from '@/components/shared/InputField';
+import LoadingBar from '@/components/shared/LoadingBar';
 import { Button } from '@/components/ui/button';
 import { LOGIN_FIELDS } from '@/constants/authPages';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
-import { login } from '@/features/authentication';
-import useMutate from '@/hooks/useMutate';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -12,14 +11,21 @@ import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import FormContainer from '../components/FormContainer';
 import PageTitle from '../components/PageTitle';
-import LoadingBar from '@/components/shared/LoadingBar';
+import { useMutation } from 'react-query';
+import { login } from '@/features/authentication';
 type Inputs = {
   email: string;
   password: string;
 };
 const Login: FC = () => {
-  const { error, mutate, loading } = useMutate(login);
   const router = useRouter();
+  const { mutate, isError, isLoading } = useMutation(login, {
+    onSuccess(data) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data));
+      router.replace('/chat');
+    },
+  });
   const {
     register,
     handleSubmit,
@@ -27,11 +33,8 @@ const Login: FC = () => {
   } = useForm<Inputs>({
     mode: 'onBlur',
   });
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const res = await mutate(data);
-    if (!res) return;
-    localStorage.setItem('token', res?.token as string);
-    router.replace('/chat');
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    mutate(data);
   };
   useEffect(() => {
     localStorage.removeItem('token');
@@ -40,7 +43,7 @@ const Login: FC = () => {
     <div className="flex w-full flex-col items-center">
       <div className="mb-8 flex flex-col items-center gap-1">
         <PageTitle className="mb-0">Login</PageTitle>
-        {!!error && (
+        {isError && (
           <p className="text-center text-destructive">
             Invalid email or password
           </p>
@@ -50,7 +53,7 @@ const Login: FC = () => {
         {LOGIN_FIELDS.map((field, i) => (
           <fieldset key={i}>
             <InputField
-              isValid={isValid && !error}
+              isValid={isValid}
               field={field}
               register={register(field.name as keyof Inputs, {
                 required: 'This field is required',
@@ -63,9 +66,9 @@ const Login: FC = () => {
         ))}
         <Button
           className={cn('mt-6 w-full text-lg')}
-          disabled={!isValid || loading}
+          disabled={!isValid || isLoading}
         >
-          {loading ? (
+          {isLoading ? (
             <LoadingBar color="#fff" width={30} height={30} />
           ) : (
             'Login'

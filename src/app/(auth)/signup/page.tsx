@@ -1,19 +1,19 @@
 'use client';
 import InputField from '@/components/shared/InputField';
+import LoadingBar from '@/components/shared/LoadingBar';
 import { Button } from '@/components/ui/button';
 import { REGISTER_FIELDS } from '@/constants/authPages';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
-import { signup } from '@/features/authentication';
-import useMutate from '@/hooks/useMutate';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import FormContainer from '../components/FormContainer';
 import PageTitle from '../components/PageTitle';
-import { useRouter } from 'next/navigation';
-import LoadingBar from '@/components/shared/LoadingBar';
+import { useMutation } from 'react-query';
+import { signup } from '@/features/authentication';
 type Inputs = {
   firstName: string;
   lastName: string;
@@ -39,9 +39,15 @@ const schema = yup
   })
   .required();
 const SignUp = () => {
-  const [isPasswordMatch, setIsPasswordMatch] = React.useState(false);
   const router = useRouter();
-  const { error, mutate, loading } = useMutate(signup);
+  const { mutate, isError, isLoading } = useMutation(signup, {
+    onSuccess(data) {
+      localStorage.setItem('token', data.data.token);
+      localStorage.setItem('user', JSON.stringify(data.data));
+      router.replace('/chat');
+    },
+  });
+  const [isPasswordMatch, setIsPasswordMatch] = React.useState(false);
   const {
     register,
     handleSubmit,
@@ -53,18 +59,8 @@ const SignUp = () => {
   });
   const password = watch('password');
   const confirmPassword = watch('confirm_password');
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const res = await mutate(
-      data as unknown as {
-        firstName: string;
-        lastName: string;
-        email: string;
-        password: string;
-      },
-    );
-    if (!res) return;
-    localStorage.setItem('token', res?.data.token as string);
-    router.replace('/chat');
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    mutate(data);
   };
   useEffect(() => {
     localStorage.removeItem('token');
@@ -91,7 +87,7 @@ const SignUp = () => {
     <div className="flex w-full flex-col items-center">
       <div className="mb-8 flex flex-col items-center gap-1">
         <PageTitle className="mb-0">Sign Up</PageTitle>
-        {!!error && (
+        {isError && (
           <p className="text-center text-destructive">
             Email already exists. Please try again with a different email
           </p>
@@ -135,9 +131,9 @@ const SignUp = () => {
         )}
         <Button
           className="mt-6 w-full text-lg"
-          disabled={!isValid || !isPasswordMatch}
+          disabled={!isValid || !isPasswordMatch || isLoading}
         >
-          {loading ? (
+          {isLoading ? (
             <LoadingBar color="#fff" width={30} height={30} />
           ) : (
             'Sign Up'
