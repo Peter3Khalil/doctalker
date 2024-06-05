@@ -9,6 +9,16 @@ import { AddFileIcon, SidebarIcon } from '../shared/Icons';
 import Logo from '../shared/Logo';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
+import { LogInIcon } from 'lucide-react';
+import { logout } from '@/features/authentication';
 const ButtonWithTooltip = withTooltip(Button);
 const BUTTON_CLASS_NAME =
   'bg-transparent text-accent-foreground hover:bg-hover-muted transition-class';
@@ -17,7 +27,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        'transition-class flex w-full items-center justify-between border-b bg-background px-3 py-2 md:px-6',
+        'transition-class flex h-16 w-full items-center justify-between border-b bg-background px-3 md:px-6',
       )}
     >
       <div className="flex items-center gap-2">
@@ -50,12 +60,27 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-2">
         <ThemeChanger />
-        <div className="transition-class cursor-pointer rounded-full p-2 hover:bg-hover-muted">
-          <Avatar className="size-8">
-            <AvatarImage src="https://picsum.photos/200/200" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="transition-class rounded-full p-2 hover:bg-hover-muted">
+            <Avatar className="size-8">
+              <AvatarImage src="https://picsum.photos/200/200" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="mr-2">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem>Subscription</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={logout} className="gap-2">
+              <LogInIcon size={ICON_SIZE} />
+              <span>Logout</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );
