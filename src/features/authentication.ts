@@ -58,6 +58,28 @@ export const signup = async ({
   return res.data;
 };
 
+export const verifyOTP = async ({
+  otp,
+}: {
+  otp: string;
+}): Promise<{
+  firstName: string;
+  lastName: string;
+  email: string;
+  token: string;
+}> => {
+  const res = await client.post('/api/user/otp/verify', { otp });
+  return res.data;
+};
+export const resendOTP = async ({
+  email,
+}: {
+  email: string;
+}): Promise<{ message: string }> => {
+  const res = await client.post('/api/user/otp/resend', { email });
+  return res.data;
+};
+
 export const logout = () => {
   localStorage.removeItem('token');
   window.location.href = '/login';
