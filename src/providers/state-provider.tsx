@@ -1,6 +1,6 @@
 'use client';
 import useMediaQuery from '@/hooks/useMediaQuery';
-import React, { createContext, useEffect, useLayoutEffect } from 'react';
+import React, { createContext, useEffect } from 'react';
 type StateContextType = {
   isPdfShown: boolean;
   isSidebarClosed: boolean;
@@ -39,19 +39,18 @@ const StateProvider = ({ children }: { children: React.ReactNode }) => {
   const togglePdf = React.useCallback(() => setIsPdfShown((prev) => !prev), []);
   const countRender = React.useRef(0);
   useEffect(() => {
-    if (isMobile && !isSidebarClosed) {
-      toggleSidebar();
+    if (isMobile) {
+      setIsSidebarClosed(true);
     }
   }, [isMobile]);
-  useLayoutEffect(() => {
+  useEffect(() => {
+    const sidebar = localStorage.getItem('isSidebarClosed') === 'true';
+    setIsSidebarClosed(sidebar);
+  }, []);
+  useEffect(() => {
     countRender.current += 1;
-    if (countRender.current === 1) {
-      const sidebar = localStorage.getItem('sidebar') === 'true';
-      if (sidebar) {
-        setIsSidebarClosed(sidebar);
-      }
-    } else {
-      localStorage.setItem('sidebar', isSidebarClosed.toString());
+    if (countRender.current !== 1) {
+      localStorage.setItem('isSidebarClosed', isSidebarClosed.toString());
     }
   }, [isSidebarClosed]);
   return (
