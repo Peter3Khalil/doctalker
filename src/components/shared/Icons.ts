@@ -27,4 +27,7 @@ export {
   KeyRound as KeyIcon,
   Moon as MoonIcon,
   Sun as SunIcon,
+  OctagonX as AlertIcon,
+  FileCheck as SuccessIcon,
+  LogOut as LogoutIcon,
 } from 'lucide-react';

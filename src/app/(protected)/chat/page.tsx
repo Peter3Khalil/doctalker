@@ -1,24 +1,30 @@
 'use client';
-import { Button } from '@/components/ui/button';
+import FileUploader from '@/components/FileUploader';
+import FolderUploader from '@/components/premiumComponents/FolderUploader';
+import LoadingBar from '@/components/shared/LoadingBar';
+import { useUser } from '@/providers/user-provider';
+import { User } from '@/types/apis';
 import React from 'react';
+import { UseQueryResult } from 'react-query';
 const Chat: React.FC = () => {
+  const { data: user, isLoading } = useUser() as UseQueryResult<User, unknown>;
+  if (isLoading)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <LoadingBar />
+      </div>
+    );
   return (
-    <div className="prose prose-sm prose-slate mx-auto flex h-full w-full flex-col items-center justify-center gap-6 py-12 dark:prose-invert md:prose-lg">
-      <article className="flex flex-col items-center gap-2 text-center *:m-0">
-        <h1 className="w-fit">Hello, Peter</h1>
-        <p className="w-fit">How can I help you today?</p>
+    <div className="flex h-full w-full flex-col items-center gap-3 overflow-auto px-10 pb-6 pt-12 md:gap-16">
+      <article className="prose prose-lg text-center dark:prose-invert *:my-2">
+        <h1 className="gradient bg-clip-text dark:to-foreground">
+          Hello, {user?.firstName}
+        </h1>
+        <p>How can we help you today?</p>
       </article>
-      <ul className="flex w-full list-none flex-col items-center gap-4 overflow-auto *:shrink-0 md:flex-row">
-        {Array.from({ length: 4 }).map((_, index) => (
-          <li
-            key={index}
-            className="transition-class h-[230px] w-[200px] cursor-pointer rounded bg-background/40 hover:bg-hover-muted"
-          ></li>
-        ))}
-      </ul>
-      <div className="flex items-center gap-2">
-        <Button>File</Button>
-        <Button variant={'outline'}>Folder</Button>
+      <div className="prose prose-lg flex w-full flex-col items-center justify-center gap-4 dark:prose-invert md:max-w-3xl md:flex-row md:items-baseline">
+        <FileUploader />
+        <FolderUploader />
       </div>
     </div>
   );
