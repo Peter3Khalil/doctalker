@@ -50,27 +50,54 @@
 }
 @layer components {
   .gradient {
-    @apply bg-gradient-to-l from-primary to-foreground;
+    @apply bg-gradient-to-l from-primary to-foreground dark:from-primary dark:to-background;
   }
   .transition-class {
     @apply transition-all duration-300 ease-in-out;
+  }
+  .custom-shadow {
+    box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
+  }
+  .hover-muted-1 {
+    @apply transition-class hover:bg-muted-foreground/10;
+  }
+  .hover-muted-2 {
+    @apply transition-class hover:bg-muted-foreground/20;
+  }
+  .hover-accent {
+    @apply transition-class hover:bg-accent hover:text-accent-foreground;
   }
 }
 body {
   min-height: 100svh;
 }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.show-scrollbar::-webkit-scrollbar,
+.show-scrollbar *::-webkit-scrollbar {
+  display: block;
+}
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
+.scroll-opacity-0::-webkit-scrollbar-thumb,
+.scroll-opacity-0::-webkit-scrollbar-track,
+.scroll-opacity-0 *::-webkit-scrollbar-thumb,
+.scroll-opacity-0 *::-webkit-scrollbar-track {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.8);
   border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--foreground) / 0.8);
+  background: transparent;
 }
 .hero {
   background-image: url('/imgs/hero.webp');
@@ -104,9 +131,6 @@ body {
   -o-border-radius: var(--radius);
 }
 
-.custom-shadow {
-  box-shadow: 0 0 20px 0 hsl(var(--primary) / 0.8);
-}
 .bg-clip-text {
   -webkit-background-clip: text;
   background-clip: text;
@@ -134,4 +158,10 @@ body {
   background-size: 500% 500%;
   animation: gradient 4s ease infinite;
   -webkit-animation: gradient 4s ease infinite;
+}
+
+@media screen and (max-width: 768px) {
+  #main::-webkit-scrollbar {
+    display: none;
+  }
 }

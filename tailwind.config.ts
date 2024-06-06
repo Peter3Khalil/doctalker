@@ -74,7 +74,25 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+    function ({
+      addUtilities,
+    }: {
+      // eslint-disable-next-line no-unused-vars
+      addUtilities: (utilities: Record<string, unknown>) => void;
+    }) {
+      addUtilities({
+        '.bg-hover-muted': {
+          backgroundColor: 'hsl(var(--muted-foreground)/10%)',
+        },
+        '.bg-hover-accent': {
+          backgroundColor: 'hsl(var(--accent))',
+        },
+      });
+    },
+  ],
 } satisfies Config;
 
 export default config;

@@ -7,6 +7,7 @@ const logoVariants = cva('', {
     variant: {
       default: 'gradient to-background bg-clip-text text-transparent',
       primary: 'gradient to-primary bg-clip-text text-transparent',
+      normal: 'text-primary dark:text-secondary-foreground',
     },
   },
   defaultVariants: {
@@ -16,10 +17,15 @@ const logoVariants = cva('', {
 interface ComponentProps
   extends React.HTMLProps<HTMLAnchorElement>,
     VariantProps<typeof logoVariants> {}
-const Logo: FC<ComponentProps> = ({ className, variant, ...props }) => {
+const Logo: FC<ComponentProps> = ({
+  className,
+  variant,
+  href = '/',
+  ...props
+}) => {
   return (
     <Link
-      href="/"
+      href={href}
       className={cn(
         'flex items-center gap-2 text-lg font-bold md:text-xl',
         className,

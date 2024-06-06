@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-
+import NextTopLoader from 'nextjs-toploader';
+import { Toaster } from '@/components/ui/toaster';
+import MyQueryClientProvider from '@/providers/query-client-provider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
@@ -17,8 +19,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('font-sans antialiased', inter.variable)}>
-        {children}
+      <body
+        className={cn(
+          'custom-scroll-track min-h-svh font-sans antialiased',
+          inter.variable,
+        )}
+      >
+        <MyQueryClientProvider>
+          <NextTopLoader color="#7c3aed" showSpinner={false} />
+          {children}
+          <Toaster />
+        </MyQueryClientProvider>
       </body>
     </html>
   );

@@ -1,13 +1,13 @@
 'use client';
-import Reveal from '@/components/Animation/Reveal';
-import Section from '@/components/Layouts/Section';
+import Reveal from '@/components/animation/Reveal';
+import Section from '@/components/layouts/Section';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { TEAM } from '@/constants/team';
 import useMediaQuery from '@/hooks/useMediaQuery';
+import { cn } from '@/lib/utils';
+import { FC } from 'react';
 import MemberCard from './MemberCard';
 import RevealDesktop from './RevealDesktop';
-import { FC } from 'react';
-import { cn } from '@/lib/utils';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Team: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });

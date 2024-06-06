@@ -3,3 +3,7 @@ node_modules/
 dist/
 *.min.js
 .next/
+package-lock.json
+yarn.lock
+package.json
+Readme.md

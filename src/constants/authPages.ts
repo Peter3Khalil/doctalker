@@ -31,7 +31,7 @@ export const LOGIN_FIELDS: InputFieldType[] = [
 export const REGISTER_FIELDS: InputFieldType[] = [
   {
     label: 'first name',
-    name: 'first_name',
+    name: 'firstName',
     type: 'text',
     placeholder: 'First Name',
     required: true,
@@ -39,7 +39,7 @@ export const REGISTER_FIELDS: InputFieldType[] = [
   },
   {
     label: 'last name',
-    name: 'last_name',
+    name: 'lastName',
     type: 'text',
     placeholder: 'Last Name',
     required: true,

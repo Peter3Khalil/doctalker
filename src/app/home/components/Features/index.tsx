@@ -1,10 +1,10 @@
-import Reveal from '@/components/Animation/Reveal';
-import Section from '@/components/Layouts/Section';
+import Reveal from '@/components/animation/Reveal';
+import Section from '@/components/layouts/Section';
+import SectionHeading from '@/components/shared/SectionHeading';
 import { FEATURES } from '@/constants/features';
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import FeatureCard from './FeatureCard';
-import SectionHeading from '@/components/shared/SectionHeading';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Features: FC<ComponentProps> = ({ className, ...props }) => {
   return (

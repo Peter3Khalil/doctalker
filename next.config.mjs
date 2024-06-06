@@ -7,6 +7,12 @@ const nextConfig = {
       },
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: process.env.IGNORE_ESLINT === 'true',
+  },
+  typescript: {
+    ignoreBuildErrors: process.env.IGNORE_TYPE_CHECKING === 'true',
+  },
 };
 
 export default nextConfig;

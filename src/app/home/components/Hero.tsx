@@ -1,10 +1,10 @@
 'use client';
-import TypingEffect from '@/components/Animation/TypingEffect';
-import { cn } from '@/lib/utils';
-import React, { FC } from 'react';
+import TypingEffect from '@/components/animation/TypingEffect';
 import GradientButton from '@/components/shared/GradientButton';
-import Link from 'next/link';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const Hero: FC<ComponentProps> = ({ className, ...props }) => {
   return (

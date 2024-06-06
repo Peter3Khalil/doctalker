@@ -35,13 +35,10 @@ const Header: FC<ComponentProps> = ({ className, ...props }) => {
           </ul>
         </nav>
         <div className="flex items-center space-x-4">
-          <Button className="rounded-full">
+          <Button variant={'ghost'} className="hidden rounded-full md:block">
             <Link href={PAGES_ROUTES['login']}>Login</Link>
           </Button>
-          <Button
-            variant="outline"
-            className="hidden rounded-full bg-transparent md:block"
-          >
+          <Button className="rounded-full">
             <Link href={PAGES_ROUTES['register']}>Register</Link>
           </Button>
         </div>

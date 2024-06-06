@@ -1,4 +1,4 @@
-import Reveal from '@/components/Animation/Reveal';
+import Reveal from '@/components/animation/Reveal';
 import React, { FC } from 'react';
 
 interface RevealDesktopProps extends React.ComponentProps<typeof Reveal> {}
