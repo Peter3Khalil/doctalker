@@ -1,4 +1,4 @@
-import Reveal from '@/components/Animation/Reveal';
+import Reveal from '@/components/animation/Reveal';
 import { AUTH_PAGE_CARDS } from '@/constants/authPages';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';

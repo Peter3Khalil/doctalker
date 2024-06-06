@@ -1,12 +1,12 @@
-import { cn } from '@/lib/utils';
-import { type UseCaseType } from '@/types';
-import Image from 'next/image';
-import React, { FC } from 'react';
-import Reveal from '@/components/Animation/Reveal';
+import Reveal from '@/components/animation/Reveal';
 import GradientButton from '@/components/shared/GradientButton';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import { cn } from '@/lib/utils';
+import { type UseCaseType } from '@/types';
+import Image from 'next/image';
 import Link from 'next/link';
+import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
   useCase: UseCaseType;
   isOdd?: boolean;

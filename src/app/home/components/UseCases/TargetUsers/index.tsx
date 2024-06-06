@@ -1,14 +1,14 @@
 'use client';
-import Reveal from '@/components/Animation/Reveal';
-import Section from '@/components/Layouts/Section';
+import Reveal from '@/components/animation/Reveal';
+import Section from '@/components/layouts/Section';
 import GradientButton from '@/components/shared/GradientButton';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { CARDS } from '@/constants/cards';
+import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 import useMediaQuery from '@/hooks/useMediaQuery';
+import Link from 'next/link';
 import React, { FC } from 'react';
 import Card from './Card';
-import Link from 'next/link';
-import { PAGES_ROUTES } from '@/constants/pagesRoutes';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
 const TargetUsers: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
