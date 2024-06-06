@@ -119,13 +119,4 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
     </aside>
   );
 };
-// const Upgrade = () => {
-//   return (
-//     <Button className="text-md w-full gap-2">
-//       <ProIcon size={18} />
-//       Upgrade
-//     </Button>
-//   );
-// };
-
 export default Sidebar;

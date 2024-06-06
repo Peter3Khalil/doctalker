@@ -1,8 +1,10 @@
 'use client';
 import withTooltip from '@/HOCs/withTooltip';
 import { ICON_SIZE } from '@/constants';
+import { logout } from '@/features/authentication';
 import { cn } from '@/lib/utils';
 import { useGlobalState } from '@/providers/state-provider';
+import { LogInIcon } from 'lucide-react';
 import Link from 'next/link';
 import ThemeChanger from '../ThemeChanger';
 import { AddFileIcon, SidebarIcon } from '../shared/Icons';
@@ -17,8 +19,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
-import { LogInIcon } from 'lucide-react';
-import { logout } from '@/features/authentication';
 const ButtonWithTooltip = withTooltip(Button);
 const BUTTON_CLASS_NAME =
   'bg-transparent text-accent-foreground hover:bg-hover-muted transition-class';
@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        'transition-class flex h-16 w-full items-center justify-between border-b bg-background px-3 md:px-6',
+        'transition-class flex h-16 w-full items-center justify-between border-b bg-background px-3 dark:border-muted-foreground/50 md:px-6',
       )}
     >
       <div className="flex items-center gap-2">
@@ -70,10 +70,6 @@ const Header = () => {
           <DropdownMenuContent className="mr-2">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Team</DropdownMenuItem>
-            <DropdownMenuItem>Subscription</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={logout} className="gap-2">
               <LogInIcon size={ICON_SIZE} />
