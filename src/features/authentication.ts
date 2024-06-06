@@ -1,30 +1,8 @@
+import type { User } from '@/types/apis';
 import client from './client';
 export interface SignupResponse {
   status: string;
   data: User;
-}
-
-export interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  subscription: string;
-  isVerified: boolean;
-  chats: string[];
-  uploadRequest: number;
-  maxUploadRequest: number;
-  queryRequest: number;
-  queryMax: number;
-  _id: string;
-  starMessages: {
-    messageID: string;
-    chatID: string;
-  }[];
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-  token: string;
 }
 
 export const login = async ({
