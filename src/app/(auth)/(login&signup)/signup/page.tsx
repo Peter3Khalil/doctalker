@@ -4,16 +4,15 @@ import LoadingBar from '@/components/shared/LoadingBar';
 import { Button } from '@/components/ui/button';
 import { REGISTER_FIELDS } from '@/constants/authPages';
 import { PAGES_ROUTES } from '@/constants/pagesRoutes';
+import { signup } from '@/features/authentication';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
 import * as yup from 'yup';
 import FormContainer from '../components/FormContainer';
 import PageTitle from '../components/PageTitle';
-import { useMutation } from 'react-query';
-import { signup } from '@/features/authentication';
 type Inputs = {
   firstName: string;
   lastName: string;
@@ -38,13 +37,12 @@ const schema = yup
     confirm_password: yup.string().min(8).max(16).required(),
   })
   .required();
+
 const SignUp = () => {
-  const router = useRouter();
   const { mutate, isError, isLoading } = useMutation(signup, {
     onSuccess(data) {
       localStorage.setItem('token', data.data.token);
-      localStorage.setItem('user', JSON.stringify(data.data));
-      router.replace('/chat');
+      window.location.href = '/chat';
     },
   });
   const [isPasswordMatch, setIsPasswordMatch] = React.useState(false);
@@ -59,12 +57,15 @@ const SignUp = () => {
   });
   const password = watch('password');
   const confirmPassword = watch('confirm_password');
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     mutate(data);
   };
+
   useEffect(() => {
     localStorage.removeItem('token');
   }, []);
+
   useEffect(() => {
     if (isValid) {
       if (password === confirmPassword) {
@@ -83,6 +84,7 @@ const SignUp = () => {
   const OTHER_FIELDS = REGISTER_FIELDS.filter(
     (field) => field.name !== 'firstName' && field.name !== 'lastName',
   );
+
   return (
     <div className="flex w-full flex-col items-center">
       <div className="mb-8 flex flex-col items-center gap-1">
