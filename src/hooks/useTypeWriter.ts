@@ -4,10 +4,14 @@ interface IUseTypeWriter {
   text: string;
   speed?: number;
 }
+
 const useTypeWriter = ({ text, speed = 1000 }: IUseTypeWriter) => {
   const [currentText, setCurrentText] = useState('');
+
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const [isDone, setIsDone] = useState(false);
+
   const intervalId = useRef<NodeJS.Timeout | null>(null);
   useEffect(() => {
     if (currentText.length !== text.length) {
@@ -22,10 +26,12 @@ const useTypeWriter = ({ text, speed = 1000 }: IUseTypeWriter) => {
         setIsDone(true);
       }, 700);
     }
+
     return () => {
       clearInterval(intervalId.current as NodeJS.Timeout);
     };
   }, [currentText, currentIndex, speed, text, isDone]);
+
   return {
     isDone,
     currentText,

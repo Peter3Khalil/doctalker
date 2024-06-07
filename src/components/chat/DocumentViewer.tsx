@@ -15,8 +15,11 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
   ...props
 }) => {
   const { isPdfShown, setTap, togglePdf } = useGlobalState();
+
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
+
   const ref = useRef<HTMLDivElement>(null);
+
   const isInView = useInView(ref, {
     amount: 0.8,
   });
@@ -31,6 +34,7 @@ const DocumentViewer: FC<DocumentViewerProps> = ({
       togglePdf();
     }
   }, [isMobile, isPdfShown, togglePdf]);
+
   return (
     <Wrapper
       className={cn('transition-class flex flex-col', className, {

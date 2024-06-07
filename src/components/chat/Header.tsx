@@ -20,10 +20,13 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 const ButtonWithTooltip = withTooltip(Button);
+
 const BUTTON_CLASS_NAME =
   'bg-transparent text-accent-foreground hover:bg-hover-muted transition-class';
+
 const Header = () => {
   const { isSidebarClosed, toggleSidebar } = useGlobalState();
+
   return (
     <header
       className={cn(

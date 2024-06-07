@@ -5,6 +5,7 @@ interface TextareaProps extends React.HTMLAttributes<HTMLDivElement> {}
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className }, ref) => {
     const { isPdfShown } = useGlobalState();
+
     return (
       <div
         className={cn(

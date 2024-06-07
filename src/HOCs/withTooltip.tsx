@@ -16,6 +16,7 @@ const withTooltip = <T extends ComponentType<any>>(Component: T) => {
 
   const WithTooltip = (props: ComponentPropsWithTooltip) => {
     const { tooltipContent, side, asChild = true, ...rest } = props;
+
     return (
       <TooltipProvider>
         <Tooltip delayDuration={200}>
@@ -29,6 +30,8 @@ const withTooltip = <T extends ComponentType<any>>(Component: T) => {
       </TooltipProvider>
     );
   };
+
   return WithTooltip;
 };
+
 export default withTooltip;

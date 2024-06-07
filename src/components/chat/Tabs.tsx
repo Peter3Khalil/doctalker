@@ -8,6 +8,7 @@ const Tabs: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => {
   const { currentTap } = useGlobalState();
+
   return (
     <div
       className={cn(

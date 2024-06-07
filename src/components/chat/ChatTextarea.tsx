@@ -8,10 +8,13 @@ interface ChatTextareaProps extends React.HTMLAttributes<HTMLDivElement> {}
 const ChatTextarea = React.forwardRef<HTMLDivElement, ChatTextareaProps>(
   ({ className, ...props }, ref) => {
     const [isTextAreaFocused, setIsTextAreaFocused] = useState(false);
+
     const textareaRef = useRef(null);
+
     const handleFocus = useCallback(() => {
       setIsTextAreaFocused(true);
     }, []);
+
     const handleBlur = useCallback(() => {
       setIsTextAreaFocused(false);
     }, []);
@@ -21,6 +24,7 @@ const ChatTextarea = React.forwardRef<HTMLDivElement, ChatTextareaProps>(
         (textareaRef.current as HTMLTextAreaElement).focus();
       }
     }, []);
+
     return (
       <div className={cn('shrink-0 p-3', className)} ref={ref} {...props}>
         <div

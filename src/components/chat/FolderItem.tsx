@@ -5,6 +5,7 @@ import ChatMenu from '@/components/shared/ChatMenu';
 interface FolderItemProps extends React.HtmlHTMLAttributes<HTMLLIElement> {
   name?: string;
 }
+
 const FolderItem: FC<FolderItemProps> = ({
   children,
   className,

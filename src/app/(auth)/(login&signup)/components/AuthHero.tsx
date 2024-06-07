@@ -4,8 +4,10 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import React, { FC } from 'react';
 interface AuthHeroProps extends React.HTMLProps<HTMLDivElement> {}
+
 const AuthHero: FC<AuthHeroProps> = ({ className, ...props }) => {
   const [loaded, setLoaded] = React.useState(false);
+
   return (
     <section
       className={cn(

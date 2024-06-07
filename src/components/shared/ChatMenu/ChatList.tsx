@@ -8,6 +8,7 @@ const ChatList: FC<React.HTMLAttributes<HTMLUListElement>> = ({
   ...props
 }) => {
   const { collapse } = useContext(ChatMenuContext);
+
   return (
     <ul
       className={cn(

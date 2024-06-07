@@ -5,6 +5,7 @@ interface IComponentProps extends React.HTMLProps<HTMLHeadingElement> {
   speed?: number;
   children: string;
 }
+
 const TypingEffect: FC<IComponentProps> = ({
   speed = 50,
   className,
@@ -15,6 +16,7 @@ const TypingEffect: FC<IComponentProps> = ({
     text: children,
     speed,
   });
+
   return (
     <p className={cn(className)} {...props}>
       {text}

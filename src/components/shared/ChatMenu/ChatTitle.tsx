@@ -9,6 +9,7 @@ interface ChatTitleProps extends React.HtmlHTMLAttributes<HTMLHeadingElement> {
   children?: string;
   icon?: LucideIcon;
 }
+
 const ChatTitle: FC<ChatTitleProps> = ({
   children,
   icon = ChatIcon,
@@ -16,9 +17,13 @@ const ChatTitle: FC<ChatTitleProps> = ({
   ...props
 }) => {
   const { collapse, toggleCollapse } = useContext(ChatMenuContext);
+
   const ref = useRef<HTMLParagraphElement>(null);
+
   const { hasOverFlow } = useResizeObserver({ ref });
+
   const Icon = icon;
+
   return (
     <h6
       id={ChatTitle.name}

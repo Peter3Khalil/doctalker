@@ -12,6 +12,7 @@ interface InputFieldProps extends React.HTMLProps<HTMLDivElement> {
   errorMessage?: string;
   register?: UseFormRegisterReturn<string>;
 }
+
 const InputField: FC<InputFieldProps> = ({
   field,
   className,
@@ -21,20 +22,27 @@ const InputField: FC<InputFieldProps> = ({
   ...props
 }) => {
   const [isFocused, setIsFocused] = React.useState(false);
+
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+
   const ref = React.useRef<HTMLInputElement>(null);
+
   const hasError = errorMessage && errorMessage?.length > 0;
+
   const handleFocus = () => {
     setIsFocused(true);
   };
+
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (!e.target.value) {
       setIsFocused(false);
     }
+
     if (register) {
       register?.onBlur(e);
     }
   };
+
   return (
     <div className="flex w-full flex-col items-start gap-1">
       <div

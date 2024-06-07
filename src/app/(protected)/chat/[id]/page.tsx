@@ -7,6 +7,7 @@ interface SpecificChatProps {
     id: string;
   };
 }
+
 const SpecificChat: FC<SpecificChatProps> = () => {
   return (
     <ResizablePanelGroup className="flex h-full w-full" direction="horizontal">

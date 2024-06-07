@@ -11,9 +11,12 @@ interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
   useCase: UseCaseType;
   isOdd?: boolean;
 }
+
 const UseCaseCard: FC<ComponentProps> = ({ useCase, isOdd }) => {
   const firstWord = useCase.name.split(' ')[0];
+
   const restOfWords = useCase.name.split(' ').slice(1).join(' ');
+
   return (
     <article className="flex flex-col items-center gap-10 rounded-lg bg-accent-foreground px-6 py-12 text-accent lg:px-16">
       <SectionHeading>{useCase.title}</SectionHeading>

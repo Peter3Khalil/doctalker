@@ -7,6 +7,7 @@ import React, { FC } from 'react';
 interface SingleChatItemProps extends React.HTMLAttributes<HTMLLIElement> {
   isActive?: boolean;
 }
+
 const SingleChatItem: FC<SingleChatItemProps> = ({
   children,
   className,
@@ -14,7 +15,9 @@ const SingleChatItem: FC<SingleChatItemProps> = ({
   ...props
 }) => {
   const ref = React.useRef<HTMLParagraphElement>(null);
+
   const { hasOverFlow } = useResizeObserver({ ref });
+
   return (
     <ChatMenu.ChatItem
       className={cn(

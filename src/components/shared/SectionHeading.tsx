@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLHeadingElement> {
   children: string;
 }
+
 const SectionHeading: FC<ComponentProps> = ({
   children,
   className,
@@ -20,4 +21,5 @@ const SectionHeading: FC<ComponentProps> = ({
     </h2>
   );
 };
+
 export default SectionHeading;

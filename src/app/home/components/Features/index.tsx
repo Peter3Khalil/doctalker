@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import FeatureCard from './FeatureCard';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const Features: FC<ComponentProps> = ({ className, ...props }) => {
   return (
     <Section className={cn(className)} {...props}>

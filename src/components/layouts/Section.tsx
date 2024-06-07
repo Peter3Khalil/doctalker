@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const Section: FC<ComponentProps> = ({ className, children, ...props }) => {
   return (
     <section

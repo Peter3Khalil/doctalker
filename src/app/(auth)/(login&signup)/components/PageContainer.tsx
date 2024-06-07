@@ -5,12 +5,14 @@ import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import AuthHero from './AuthHero';
 interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const PageContainer: FC<PageContainerProps> = ({
   children,
   className,
   ...props
 }) => {
   const { isMatched: isDesktop } = useMediaQuery({ minWidth: 1024 });
+
   return (
     <div className={cn('flex h-full', className)} {...props}>
       <Logo

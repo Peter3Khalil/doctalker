@@ -19,10 +19,12 @@ const ChatMenu = ({
   ...props
 }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
   const [collapse, setCollapse] = useState(true);
+
   const toggleCollapse = useCallback(
     () => setCollapse((prevCollapse) => !prevCollapse),
     [],
   );
+
   return (
     <ChatMenuContext.Provider value={{ collapse, toggleCollapse }}>
       <div className={cn('min-h-0 w-full pr-1 text-lg', className)} {...props}>
@@ -31,6 +33,7 @@ const ChatMenu = ({
     </ChatMenuContext.Provider>
   );
 };
+
 ChatMenu.ChatTitle = ChatTitle;
 ChatMenu.ChatList = ChatList;
 ChatMenu.ChatItem = ChatItem;

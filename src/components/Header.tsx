@@ -8,8 +8,10 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { Button } from './ui/button';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const Header: FC<ComponentProps> = ({ className, ...props }) => {
   const { move } = useScroll();
+
   return (
     <header
       className={cn(

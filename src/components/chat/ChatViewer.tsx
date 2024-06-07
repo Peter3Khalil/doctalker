@@ -6,9 +6,12 @@ import Message from './Message';
 import Textarea from './Textarea';
 import Wrapper from './Wrapper';
 interface ChatViewerProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
   const { isPdfShown, setTap } = useGlobalState();
+
   const ref = useRef<HTMLDivElement>(null);
+
   const isInView = useInView(ref, {
     amount: 1,
   });
@@ -17,6 +20,7 @@ const ChatViewer: FC<ChatViewerProps> = ({ className, ...props }) => {
       setTap('chat');
     }
   }, [isInView, setTap]);
+
   return (
     <Wrapper
       className={cn(

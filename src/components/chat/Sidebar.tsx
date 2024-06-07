@@ -22,9 +22,12 @@ const ButtonWithTooltip = withTooltip(Button);
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: never;
 }
+
 const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
   const { isSidebarClosed, toggleSidebar } = useGlobalState();
+
   const pathname = usePathname();
+
   return (
     <aside
       className={cn(
@@ -119,4 +122,5 @@ const Sidebar: FC<SidebarProps> = ({ className, ...props }) => {
     </aside>
   );
 };
+
 export default Sidebar;

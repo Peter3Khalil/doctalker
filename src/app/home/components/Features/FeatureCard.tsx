@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
   feature: Feature;
 }
+
 const FeatureCard: FC<ComponentProps> = ({ feature, className, ...props }) => {
   return (
     <article

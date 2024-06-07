@@ -6,6 +6,7 @@ import * as React from 'react';
 import type { ToastActionElement, ToastProps } from '@/components/ui/toast';
 
 const TOAST_LIMIT = 1;
+
 const TOAST_REMOVE_DELAY = 1000000;
 
 type ToasterToast = ToastProps & {
@@ -26,6 +27,7 @@ let count = 0;
 
 function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER;
+
   return count.toString();
 }
 
@@ -112,6 +114,7 @@ export const reducer = (state: State, action: Action): State => {
         ),
       };
     }
+
     case 'REMOVE_TOAST':
       if (action.toastId === undefined) {
         return {
@@ -119,6 +122,7 @@ export const reducer = (state: State, action: Action): State => {
           toasts: [],
         };
       }
+
       return {
         ...state,
         toasts: state.toasts.filter((t) => t.id !== action.toastId),
@@ -148,6 +152,7 @@ function toast({ ...props }: Toast) {
       type: 'UPDATE_TOAST',
       toast: { ...props, id },
     });
+
   const dismiss = () => dispatch({ type: 'DISMISS_TOAST', toastId: id });
 
   dispatch({
@@ -174,8 +179,10 @@ function useToast() {
 
   React.useEffect(() => {
     listeners.push(setState);
+
     return () => {
       const index = listeners.indexOf(setState);
+
       if (index > -1) {
         listeners.splice(index, 1);
       }

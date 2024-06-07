@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 interface ComponentProps extends React.ComponentProps<typeof Button> {}
+
 const GradientButton: FC<ComponentProps> = ({
   className,
   children,

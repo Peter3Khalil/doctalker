@@ -7,6 +7,7 @@ interface ComponentProps extends React.ComponentProps<typeof motion.div> {
   duration?: number;
   rootMargin?: string;
 }
+
 const Reveal: FC<ComponentProps> = ({
   children,
   className,
@@ -16,7 +17,9 @@ const Reveal: FC<ComponentProps> = ({
   ...props
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+
   const controls = useAnimation();
+
   const isInView = useInView(ref, {
     once: true,
     margin: rootMargin,
@@ -26,6 +29,7 @@ const Reveal: FC<ComponentProps> = ({
       controls.start('visible');
     }
   }, [controls, isInView]);
+
   return (
     <motion.div
       variants={{

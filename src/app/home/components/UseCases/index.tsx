@@ -8,8 +8,10 @@ import TargetUsers from './TargetUsers';
 import UseCaseCard from '../UseCases/UseCaseCard';
 import Section from '@/components/layouts/Section';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const UseCases: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
+
   return (
     <Section className={cn('bg-foreground', className)} {...props}>
       {USE_CASES.map((useCase, index) => (

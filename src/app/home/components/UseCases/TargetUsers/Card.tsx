@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {
   card: Card;
 }
+
 const Card: FC<ComponentProps> = ({ card }) => {
   return (
     <article className="flex h-full w-full flex-col items-center gap-8 rounded-lg border border-primary bg-foreground px-6 py-10 text-center">

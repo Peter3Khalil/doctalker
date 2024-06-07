@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React, { FC } from 'react';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const Hero: FC<ComponentProps> = ({ className, ...props }) => {
   return (
     <section className="hero relative flex h-full flex-col items-center">

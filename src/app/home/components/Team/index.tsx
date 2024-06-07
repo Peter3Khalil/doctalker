@@ -9,8 +9,10 @@ import { FC } from 'react';
 import MemberCard from './MemberCard';
 import RevealDesktop from './RevealDesktop';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const Team: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
+
   return (
     <Section id="team" className={cn('bg-foreground', className)} {...props}>
       <SectionHeading>Meet the team</SectionHeading>

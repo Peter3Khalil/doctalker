@@ -17,6 +17,7 @@ const logoVariants = cva('', {
 interface ComponentProps
   extends React.HTMLProps<HTMLAnchorElement>,
     VariantProps<typeof logoVariants> {}
+
 const Logo: FC<ComponentProps> = ({
   className,
   variant,

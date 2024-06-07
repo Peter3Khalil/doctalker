@@ -5,6 +5,7 @@ import SingleChatItem from './SingleChatItem';
 interface AllChatsProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   chats: (string | string[])[];
 }
+
 const AllChats: FC<AllChatsProps> = ({ className, chats, ...props }) => {
   return (
     <ChatMenu className={className} {...props}>
@@ -20,6 +21,7 @@ const AllChats: FC<AllChatsProps> = ({ className, chats, ...props }) => {
               </FolderItem>
             );
           }
+
           return <SingleChatItem key={i}>{chat}</SingleChatItem>;
         })}
       </ChatMenu.ChatList>

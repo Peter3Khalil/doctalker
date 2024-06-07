@@ -11,6 +11,7 @@ interface TooltipProps {
   title: string;
   asChild?: boolean;
 }
+
 const Tooltip: FC<TooltipProps> = ({ children, title, asChild = false }) => {
   return (
     <TooltipProvider delayDuration={50}>

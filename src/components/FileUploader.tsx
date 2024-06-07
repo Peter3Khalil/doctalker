@@ -28,11 +28,16 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
   ...props
 }) => {
   const [file, setFile] = useState<File | null>(null);
+
   const [open, setOpen] = useState(false);
+
   const [progress, setProgress] = useState(0);
+
   const [componentStatus, setComponentStatus] =
     useState<ComponentStatus>('idle');
+
   const size = file ? Number(file.size / 1024 / 1024).toFixed(2) : 0;
+
   const dialogVariants = {
     uploadingSuccess: {
       title: <p>File Uploaded Successfully</p>,
@@ -86,7 +91,9 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
       icon: null,
     },
   };
+
   const dialog = dialogVariants[componentStatus];
+
   const {
     mutate: upload,
     isSuccess,
@@ -103,6 +110,7 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
       setComponentStatus('uploading');
     },
   });
+
   const { mutate: process } = useMutation(processFile, {
     onSuccess() {
       setComponentStatus('processingSuccess');
@@ -114,18 +122,24 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
       setComponentStatus('processing');
     },
   });
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     setProgress(0);
+
     if (files && files.length > 0) {
       if (!isPdf(files[0]) && !isDocx(files[0])) {
         alert('Only PDF and DOCX files are allowed');
+
         return;
       }
+
       setFile(files[0]);
     }
+
     e.target.value = '';
   };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setProgress(0);
@@ -142,14 +156,17 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
       },
     });
   };
+
   useEffect(() => {
     setComponentStatus('idle');
   }, [file]);
+
   useEffect(() => {
     if (isSuccess) {
       process({ chatId: data.chatId });
     }
   }, [isSuccess]);
+
   return (
     <UploaderForm
       onSubmit={handleSubmit}

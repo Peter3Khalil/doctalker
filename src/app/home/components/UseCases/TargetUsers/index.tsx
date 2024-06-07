@@ -10,8 +10,10 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import Card from './Card';
 interface ComponentProps extends React.HTMLProps<HTMLDivElement> {}
+
 const TargetUsers: FC<ComponentProps> = ({ className, ...props }) => {
   const { isMatched: isMobile } = useMediaQuery({ maxWidth: 768 });
+
   return (
     <Section className={className} {...props}>
       <SectionHeading>Accelerate your work.</SectionHeading>

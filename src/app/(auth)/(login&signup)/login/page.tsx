@@ -17,8 +17,10 @@ type Inputs = {
   email: string;
   password: string;
 };
+
 const Login: FC = () => {
   const router = useRouter();
+
   const { mutate, isError, isLoading } = useMutation(login, {
     onSuccess(data) {
       localStorage.setItem('token', data.token);
@@ -26,6 +28,7 @@ const Login: FC = () => {
       router.replace('/chat');
     },
   });
+
   const {
     register,
     handleSubmit,
@@ -33,12 +36,15 @@ const Login: FC = () => {
   } = useForm<Inputs>({
     mode: 'onBlur',
   });
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     mutate(data);
   };
+
   useEffect(() => {
     localStorage.removeItem('token');
   }, []);
+
   return (
     <div className="flex w-full flex-col items-center">
       <div className="mb-8 flex flex-col items-center gap-1">
