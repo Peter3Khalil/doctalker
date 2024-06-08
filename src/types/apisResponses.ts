@@ -26,8 +26,8 @@ export type VerifyOTPResponse = {
   token: string;
 };
 
-export type UploadFolderResponse = {
-  status: string;
+export type UploadDocumentsResponse = {
+  status?: string;
   message: string;
   chatId: string;
 };

@@ -45,3 +45,18 @@ export type MemberType = {
   name: string;
   role: string;
 };
+
+export type DocumentStatusType =
+  | 'idle'
+  | 'uploading'
+  | 'uploadingSuccess'
+  | 'uploadingFail'
+  | 'processing'
+  | 'processingSuccess'
+  | 'processingFail';
+
+export type DialogVariantType = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};

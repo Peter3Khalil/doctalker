@@ -15,7 +15,7 @@ const Chat: React.FC = () => {
         </h1>
         <p>How can we help you today?</p>
       </article>
-      <div className="prose prose-lg flex w-full flex-col items-center justify-center gap-4 dark:prose-invert md:max-w-3xl md:flex-row md:items-baseline">
+      <div className="flex w-full flex-col items-center justify-center gap-4 md:max-w-3xl md:flex-row md:items-baseline">
         <FileUploader />
         <FolderUploader />
       </div>

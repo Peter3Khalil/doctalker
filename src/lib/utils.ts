@@ -5,29 +5,25 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getOnlyPdfOrWords = (files: FileList) => {
+export const getOnlyPdfOrWords = (files: FileList | File[]) => {
   const filteredFiles: File[] = [];
 
-  if (files) {
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
 
-      if (isPdf(file) || isDocx(file)) {
-        filteredFiles.push(file);
-      }
+    if (isPdf(file) || isDocx(file)) {
+      filteredFiles.push(file);
     }
   }
 
   return filteredFiles;
 };
 
-export const getTotalSize = (files: FileList | File[]) => {
+export const getTotalSize = (files: FileList | File[]): number => {
   let totalSize = 0;
 
-  if (files) {
-    for (let i = 0; i < files.length; i++) {
-      totalSize += files[i].size;
-    }
+  for (let i = 0; i < files.length; i++) {
+    totalSize += files[i].size;
   }
 
   return totalSize / 1024 / 1024;

@@ -30,4 +30,6 @@ export {
   OctagonX as AlertIcon,
   FileCheck as SuccessIcon,
   LogOut as LogoutIcon,
+  Loader as LoaderIcon,
+  FileScan as FileScanIcon,
 } from 'lucide-react';

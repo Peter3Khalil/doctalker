@@ -1,24 +1,26 @@
 import type {
   ProcessFileResponse,
+  UploadDocumentsResponse,
   UploadFileResponse,
-  UploadFolderResponse,
 } from '@/types/apisResponses';
-import client from './client';
 import { AxiosRequestConfig } from 'axios';
+import client from './client';
 
 export const uploadFile = async ({
-  formData,
+  file,
   config,
 }: {
-  formData: FormData;
+  file: File;
   config?: AxiosRequestConfig<FormData>;
 }): Promise<UploadFileResponse> => {
+  const formData = new FormData();
+  formData.append('file', file);
   const res = await client.post('/api/upload/upload', formData, config);
 
   return res.data;
 };
 
-export const processFile = async ({
+export const processDocument = async ({
   chatId,
 }: {
   chatId: string;
@@ -28,18 +30,22 @@ export const processFile = async ({
   return res.data;
 };
 
-type UploadFolderParams = {
-  files: FileList;
+type UploadDocumentsParams = {
+  files: FileList | File[];
   folderName?: string;
   config?: AxiosRequestConfig<FormData>;
 };
 
-export const uploadFolder = async ({
+export const uploadDocuments = async ({
   files,
   config,
   folderName,
-}: UploadFolderParams): Promise<UploadFolderResponse> => {
+}: UploadDocumentsParams): Promise<UploadDocumentsResponse> => {
   const formData = new FormData();
+
+  if (files.length === 1) {
+    return uploadFile({ file: files[0], config });
+  }
 
   for (let i = 0; i < files.length; i++) {
     formData.append('files', files[i]);
