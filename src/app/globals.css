@@ -67,6 +67,9 @@
   .hover-accent {
     @apply transition-class hover:bg-accent hover:text-accent-foreground;
   }
+  .border {
+    @apply dark:border-muted-foreground/40;
+  }
 }
 body {
   min-height: 100svh;

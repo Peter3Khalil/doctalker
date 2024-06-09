@@ -1,6 +1,6 @@
 import { DIALOG_VARIANTS } from '@/constants/dialogVariants';
 import useUploadDocuments from '@/hooks/useUploadDocument';
-import { isDocx, isPdf } from '@/lib/utils';
+import { cn, isDocx, isPdf } from '@/lib/utils';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import { AddFileIcon } from './shared/Icons';
 import { Button } from './ui/button';
@@ -84,9 +84,13 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
   }, [isUploading]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={className} {...props}>
-        <Card className="flex flex-col items-center">
+    <div className="w-full md:w-auto">
+      <form
+        onSubmit={handleSubmit}
+        className={cn('w-full md:w-[300px]', className)}
+        {...props}
+      >
+        <Card className="flex w-full flex-col items-center">
           <CardHeader className="items-center">
             <div className="flex items-center gap-2">
               <AddFileIcon className="size-8" />
@@ -113,7 +117,7 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
             </p>
           </CardContent>
           {file && (
-            <CardFooter className="flex flex-col gap-2">
+            <CardFooter className="flex w-full flex-col gap-2">
               <article className="prose prose-sm flex w-full flex-col items-center gap-2 text-center dark:prose-invert">
                 <div className="w-full *:m-0">
                   <p className="w-full overflow-hidden text-ellipsis text-nowrap">

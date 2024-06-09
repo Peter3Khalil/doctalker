@@ -2,7 +2,7 @@
 import { DIALOG_VARIANTS } from '@/constants/dialogVariants';
 import withPlan from '@/HOCs/withPlan';
 import useUploadDocuments from '@/hooks/useUploadDocument';
-import { getOnlyPdfOrWords, getTotalSize } from '@/lib/utils';
+import { cn, getOnlyPdfOrWords, getTotalSize } from '@/lib/utils';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { ChatWithFolderIcon } from '../shared/Icons';
 import { Badge } from '../ui/badge';
@@ -94,9 +94,13 @@ const FolderUploader: FC<FolderUploaderProps> = ({
   }, [files]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={className} {...props}>
-        <Card className="flex flex-col items-center">
+    <div className="w-full md:w-auto">
+      <form
+        onSubmit={handleSubmit}
+        className={cn('w-full md:w-[300px]', className)}
+        {...props}
+      >
+        <Card className="flex w-full flex-col items-center">
           <CardHeader className="items-center">
             <div className="flex items-center gap-2">
               <ChatWithFolderIcon className="size-8" />
@@ -135,7 +139,7 @@ const FolderUploader: FC<FolderUploaderProps> = ({
             </p>
           </CardContent>
           {files && files.length > 0 && (
-            <CardFooter className="flex flex-col gap-2">
+            <CardFooter className="flex w-full flex-col gap-2">
               <article className="prose prose-sm flex w-full flex-col items-center gap-2 text-center dark:prose-invert">
                 <div className="w-full *:m-0">
                   <p className="w-full overflow-hidden text-ellipsis text-nowrap">
