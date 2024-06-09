@@ -33,25 +33,14 @@ const FolderUploader: FC<FolderUploaderProps> = ({
     documentStatus,
     isProcessingFailed,
     isProcessingSuccessfully,
-    isUploadedSuccessfully,
     isUploadingFailed,
     isUploading,
     upload,
   } = useUploadDocuments();
 
   const canCloseDialog = useMemo(() => {
-    return (
-      isUploadingFailed ||
-      isUploadedSuccessfully ||
-      isProcessingFailed ||
-      isProcessingSuccessfully
-    );
-  }, [
-    isProcessingFailed,
-    isProcessingSuccessfully,
-    isUploadedSuccessfully,
-    isUploadingFailed,
-  ]);
+    return isUploadingFailed || isProcessingFailed || isProcessingSuccessfully;
+  }, [isProcessingFailed, isProcessingSuccessfully, isUploadingFailed]);
 
   const dialogVariants = useMemo(() => {
     return DIALOG_VARIANTS.folder;

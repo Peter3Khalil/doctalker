@@ -26,24 +26,13 @@ const FileUploader: FC<React.HTMLAttributes<HTMLFormElement>> = ({
     documentStatus,
     isProcessingFailed,
     isProcessingSuccessfully,
-    isUploadedSuccessfully,
     isUploadingFailed,
     isUploading,
   } = useUploadDocuments();
 
   const canCloseDialog = useMemo(() => {
-    return (
-      isUploadingFailed ||
-      isUploadedSuccessfully ||
-      isProcessingFailed ||
-      isProcessingSuccessfully
-    );
-  }, [
-    isProcessingFailed,
-    isProcessingSuccessfully,
-    isUploadedSuccessfully,
-    isUploadingFailed,
-  ]);
+    return isUploadingFailed || isProcessingFailed || isProcessingSuccessfully;
+  }, [isProcessingFailed, isProcessingSuccessfully, isUploadingFailed]);
 
   const dialogVariants = useMemo(() => {
     return DIALOG_VARIANTS.file;
