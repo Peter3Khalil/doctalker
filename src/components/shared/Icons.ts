@@ -32,4 +32,7 @@ export {
   LogOut as LogoutIcon,
   Loader as LoaderIcon,
   FileScan as FileScanIcon,
+  Copy as CopyIcon,
+  ThumbsUp as LikeIcon,
+  ThumbsDown as DislikeIcon,
 } from 'lucide-react';

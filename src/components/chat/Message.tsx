@@ -1,39 +1,34 @@
 import { cn } from '@/lib/utils';
-import { cva, VariantProps } from 'class-variance-authority';
-import React from 'react';
-const messageVariants = cva(
-  'w-full break-before-all break-words rounded-md px-5 py-3',
-  {
-    variants: {
-      variant: {
-        user: 'bg-primary text-primary-foreground',
-        bot: 'bg-accent-foreground text-accent',
-      },
-    },
-    defaultVariants: {
-      variant: 'user',
-    },
-  },
-);
-interface MessageProps
-  extends React.HTMLAttributes<HTMLLIElement>,
-    VariantProps<typeof messageVariants> {
-  children: string;
-}
-const Message = React.forwardRef<HTMLLIElement, MessageProps>(
-  ({ className, children, variant, ...props }, ref) => {
-    return (
-      <li
-        ref={ref}
-        className={cn(messageVariants({ variant, className }))}
-        {...props}
-      >
-        {children}
-      </li>
-    );
-  },
-);
+import React, { FC } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-Message.displayName = 'Message';
+const messageVariants = cva('rounded border p-4 text-base', {
+  variants: {
+    variant: {
+      default: 'bg-primary text-primary-foreground',
+      secondary: 'bg-background text-foreground shadow-md',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+interface MessageProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof messageVariants> {}
+
+const Message: FC<MessageProps> = ({
+  children,
+  variant,
+  className,
+  ...props
+}) => {
+  return (
+    <div className={cn(messageVariants({ variant, className }))} {...props}>
+      {children}
+    </div>
+  );
+};
 
 export default Message;
